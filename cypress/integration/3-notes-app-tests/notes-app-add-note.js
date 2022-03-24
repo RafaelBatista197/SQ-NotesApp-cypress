@@ -13,6 +13,19 @@ describe('Tests to be done on "Notes App', () => {
         cy.get('#add').click()
 
         cy.get('.notes').get('.box').should('have.length', 1)
+
+    })
+
+    it('Add 1 new note item to list of notes with 500 characters. The list of items must have 1 item', () => {
+        cy.get('textarea')
+            .type('Buy tomatos{enter}')
+
+        cy.get('#add').click()
+
+        cy.get('.notes').get('.box').should('have.length', 1)
+
+        //visualmente a textbox não está correta, era necessário usar Visual Testing
+
     })
 
     it('Add empty item', () => {
