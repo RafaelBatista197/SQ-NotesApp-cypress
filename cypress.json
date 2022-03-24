@@ -1,4 +1,3 @@
 {
-    "experimentalStudio": true,
-    "testFiles": "**/*.{feature,features}"
+    "experimentalStudio": true
 }
