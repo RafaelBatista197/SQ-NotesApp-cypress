@@ -12,24 +12,27 @@ describe('Tests to be done on "Notes App', () => {
 
         cy.get('#add').click()
 
+        //confirm item was added with the correct text
         cy.get('.notes').get('.box').should('have.length', 1)
-
+        cy.get('.box').contains("Buy tomatos")
     })
 
-    it('Add 1 new note item to list of notes with 200 characters. The list of items must have 1 item', () => {
+    it('Add 1 new note item to list of notes with 150 characters. The list of items must have 1 item', () => {
         cy.get('textarea')
-            .type('{enter}')
+            .type('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa{enter}')
 
         cy.get('#add').click()
 
+        //confirm item was added with the correct text
         cy.get('.notes').get('.box').should('have.length', 1)
+        cy.get('.box').contains("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
 
-        //visualmente a textbox não está correta, era necessário usar Visual Testing
-
+        /*
+            visualmente a textbox não está correta, era necessário usar Visual Testing
+        */
     })
 
     it('Add empty item', () => {
-
         cy.get('#add').click()
 
         cy.on('uncaught:exception', (err, runnable) => {
@@ -38,6 +41,7 @@ describe('Tests to be done on "Notes App', () => {
             return false
         })
 
+        //should not create a new item
         cy.get('.notes').get('.box').should('have.length', 0)
     })
 
@@ -47,7 +51,6 @@ describe('Tests to be done on "Notes App', () => {
     })
 
     it('Add 1 new item and increase the size of the letter to 30', () => {
-
         cy.get('textarea')
             .type('Big text example{enter}')
 
@@ -63,7 +66,6 @@ describe('Tests to be done on "Notes App', () => {
     })
 
     it('Add 1 new item and decrease the size of the letter to 8', () => {
-
         cy.get('textarea')
             .type('Small text example{enter}')
 
@@ -75,6 +77,4 @@ describe('Tests to be done on "Notes App', () => {
         cy.get('.notes').get('.box').should('have.length', 1)
         cy.get('.box').contains("Small text example")
     })
-
-    
 })
