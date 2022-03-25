@@ -22,7 +22,6 @@ describe('Tests to be done on "Notes App', () => {
     })
 
     it('Remove an item from an empty list', () => {
-
         cy.get('.notes').get('.box').should('have.length', 0)
 
         //since there are no items no remove, the button to remove should not exist
