@@ -6,7 +6,7 @@ describe('Tests to be done on "Notes App', () => {
         cy.get('h1').contains("Notes App")
     })
 
-    it('Add 1 new note item to list of notes. The list of items must have 1 item', () => {
+    it('Add 1 new note item to list of notes', () => {
         cy.get('textarea')
             .type('Buy tomatos{enter}')
 
@@ -17,7 +17,7 @@ describe('Tests to be done on "Notes App', () => {
         cy.get('.box').contains("Buy tomatos")
     })
 
-    it('Add 1 new note item to list of notes with 150 characters. The list of items must have 1 item', () => {
+    it('Add 1 new note item to list of notes with 150 characters', () => {
         cy.get('textarea')
             .type('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa{enter}')
 
