@@ -1,4 +1,4 @@
-Feature: Edit note already added
+Feature: Edit an item of the list of notes
 
     After a new note is added to the list of notes, the system must have an option to edit the note.
     So, if the user written something wrong or wants to add more details on the note, when
@@ -11,14 +11,14 @@ Feature: Edit note already added
         Given the user wants to edit a existing note
         And the note has category or not
         And the note has text
-        When the button "Edit note" its clicked on an specific note
+        When the edit button is clicked on an specific note
         Then the category text must go to the editable area
         And the text of the note must go to the editable area
 
 
     Scenario: Edit note category successfully
         Given the editable area of the category contains the text of category of the note
-        And editable area of the category its clicked on
+        And editable area of the category is clicked on
         When a new category text its writen/added
         Then the content of the category editable area contains the new category
 
@@ -33,7 +33,7 @@ Feature: Edit note already added
     Scenario: Save editable note text and category successfully
         Given the editable area of the note text contains the new text of the note
         And the editable area of the category contains the new text of category of the note
-        When the button "Update note" button its clicked
+        When the update button is clicked
         Then the content of the note its updated with the new text
         And the content of the category its updated with the new text
         And the new category its added to the list of categoreis
@@ -44,7 +44,7 @@ Feature: Edit note already added
         Given the user wants to edit a existing note
         And the note has category or not
         And the note has text
-        When the button "Edit note" its clicked on an specific note
+        When the edit button is clicked on an specific note
         Then the category text must go to the editable area
         And the text of the note must go to the editable area
 
@@ -59,7 +59,7 @@ Feature: Edit note already added
     Scenario: Save editable note text with new text but same category successfully
         Given the editable area of the note text contains the new text of the note
         And the editable area of the category contains the same category of the note
-        When the button "Update note" button its clicked
+        When the update button is clicked
         Then the content of the note its updated with the new text
         And the content of the category its the same as before
         And no new category its added to the list of categoreis
@@ -71,7 +71,7 @@ Feature: Edit note already added
         Given the user wants to edit a existing note
         And the note has category if exists
         And the note has text
-        When the button "Edit note" its clicked on an specific note
+        When the edit button is clicked on an specific note
         Then the category text must go to the editable area
         And the text of the note must go to the editable area
 
@@ -86,7 +86,7 @@ Feature: Edit note already added
     Scenario: Save editable note text with new category but same text of the note successfully
         Given the editable area of the note text contains the new text of category of the note
         And the editable area of the category contains the same category of the note
-        When the button "Update note" button its clicked
+        When the update button is clicked
         Then the content of the note its the same as before
         And the content of the category its updated with the new text
         And the new category its added to the list of categoreis
@@ -97,7 +97,7 @@ Feature: Edit note already added
     Scenario: Click the Edit note button on a note that only has note text
         Given the user wants to edit a existing note
         And the note area has text
-        When the button "Edit note" its clicked on an specific note
+        When the edit button is clicked on an specific note
         Then the text of the note must go to the editable area
 
 
@@ -111,7 +111,7 @@ Feature: Edit note already added
     Scenario: Save editable note text with no category successfully
         Given the editable area of the note text contains the new text of the note
         And the editable area of the category contains no text
-        When the button "Update note" button its clicked
+        When the update button its clicked
         Then the content of the note its updated with the new text
         And no new category its added to the list of categoreis
 
@@ -121,7 +121,7 @@ Feature: Edit note already added
         Given the user wants to edit a existing note
         And the note has category if exists
         And the note has text
-        When the button "Edit note" its clicked on an specific note
+        When the edit button is clicked on an specific note
         Then the category text must go to the editable area if exists
         And the text of the note must go to the editable area
 
@@ -143,7 +143,7 @@ Feature: Edit note already added
     Scenario: Save editable note text with category and no text un-successfully
         Given the editable area of the note text contains the no text
         And the editable area of the category contains new category text
-        When the button "Update note" button its clicked
+        When the update button is clicked
         And the note its not updated
         Then the application should display "Error! Note must have text." error message
         And the note its not updated
@@ -157,7 +157,7 @@ Feature: Edit note already added
         Given the user wants to edit a existing note
         And the note has category if exists
         And the note has text
-        When the button "Edit note" its clicked on an specific note
+        When the edit button is clicked on an specific note
         Then the category text must go to the editable area if exists
         And the text of the note must go to the editable area
 
@@ -179,7 +179,7 @@ Feature: Edit note already added
     Scenario: Save editable note text with no category and no text un-successfully
         Given the editable area of the note text contains the no text
         And the editable area of the category contains no category text
-        When the button "Update note" button its clicked
+        When the update button is clicked
         Then the application should display "Error! Note must have text." error message
         And the note its not updated
         And no new category its added to the list of categoreis
