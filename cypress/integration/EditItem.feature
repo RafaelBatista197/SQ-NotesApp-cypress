@@ -39,7 +39,7 @@ Feature: Edit an item of the list of notes
         And the new category is added to the list of categoreis
 
 
-    #Caminho onde é escolhido uma categoria do spinner
+    #Caminho onde é escolhido uma categoria da lista de categorias que já existem
     Scenario: Click the Edit note button on a note
         Given the user wants to edit a existing note
         And the note has category or not
@@ -55,7 +55,7 @@ Feature: Edit an item of the list of notes
         Then the content of the category editable area contains the category picked from the list
 
 
-    Scenario: Edit note text 
+    Scenario: Edit note text
         Given the editable area of the note text contains the text of the note
         And editable area of the note text is clicked on
         When new text is writen/added or deleted to the note
@@ -97,7 +97,7 @@ Feature: Edit an item of the list of notes
 
 
 
-    #Caminho editar cor do texto
+    #Caminho editar tamanho do texto
     Scenario: Click the Edit note button on a note
         Given the user wants to edit a existing note
         And the note has category or not
@@ -172,6 +172,31 @@ Feature: Edit an item of the list of notes
         Then the content of the note is the same as before
         And the content of the category is updated with the new text
         And the new category is added to the list of categoreis
+
+
+    #Caminho em que a catagoria de uma nota é editada e escolhida da lista de categorias, mas o texto da nota não é editado
+    Scenario: Click the Edit note button on a note
+        Given the user wants to edit a existing note
+        And the note has category if exists
+        And the note has text
+        When the edit button is clicked on an specific note
+        Then the category text must go to the editable area
+        And the text of the note must go to the editable area
+
+
+    Scenario: Edit note category by choosing one from the list of categories
+        Given the editable area of the category contains the text of category of the note
+        When a new category is picked from the list of categoreis that already exist
+        Then the content of the category editable area contains the category picked from the list
+
+
+
+    Scenario: Save editable note text with new category but same text of the note successfully
+        Given the editable area of the note text contains the new text of category of the note
+        And the editable area of the category contains the same category of the note
+        When the update button is clicked
+        Then the content of the note is the same as before
+        And the content of the category is updated with the new text
 
 
     #Caminho em que a catagoria de uma nota é editada com numeros
