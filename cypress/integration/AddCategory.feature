@@ -16,7 +16,7 @@ Feature: Add a category
         And an editable area appears to write the category
         And types the category
         And clicks on the confirm button
-        Then the new category should be added to the list of categories
+        Then the new category is added to the list of categories
 
 #-----------------------------------------------------------------------
 #get warning
@@ -28,8 +28,8 @@ Feature: Add a category
         And an editable area appears to write the category
         And types a category that already exists
         And clicks on the confirm button
-        Then the user should get a warning saying "That category already exists!"
-        And the new category should not be added to the list of categories 
+        Then the user gets a warning saying "That category already exists!"
+        And the new category is not be added to the list of categories 
         
 #-----------------------------------------------------------------------
 #get warning
@@ -41,8 +41,8 @@ Feature: Add a category
         And an editable area appears to write the category
         And does not type anything 
         And clicks on the confirm button
-        Then the user should get a warning saying "The category must have some text!"
-        And the new category should not be added to the list of categories  
+        Then the user gets a warning saying "The category must have some text!"
+        And the new category is not be added to the list of categories  
 
 #-----------------------------------------------------------------------
 
@@ -53,7 +53,7 @@ Feature: Add a category
         And an editable area appears to write the category
         And types <input>
         And clicks on the confirm button
-        Then the new category should be added to the list of categories
+        Then the new category is added to the list of categories
 
     Examples:
         |    text   |   input   |
@@ -68,8 +68,8 @@ Feature: Add a category
         And an editable area appears to write the category
         And types the name of the category
         And clicks on the cancel button
-        Then the new category should not be added to the list of categories
-        And the text written on the textarea for the new category should be cleaned
+        Then the new category is not be added to the list of categories
+        And the text written on the textarea for the new category is cleaned
 
 #-----------------------------------------------------------------------
 
@@ -79,8 +79,8 @@ Feature: Add a category
         When the user writes text in the note
         And chooses a category from the list of categories
         And clicks the button to save the new note
-        Then the note should be added to the list of notes
-        And the category should be visible
+        Then the note is be added to the list of notes
+        And the category is visible
 
 #-----------------------------------------------------------------------
 #Backtrack
@@ -97,7 +97,7 @@ Feature: Add a category
         Given an editable area appears to write the category
         When the user writes the name of the new category
         And clicks on the confirm button
-        Then the new category should be added to the list of categories
+        Then the new category is added to the list of categories
 
 
     Scenario: Add the new category to the note
@@ -105,8 +105,8 @@ Feature: Add a category
         And the user writes text in the note
         And chooses the new category
         When the user clicks the button to add the new note
-        Then the note should be added to the list of notes
-        And the category should be visible
+        Then the note is added to the list of notes
+        And the category is visible
 
 
 #-----------------------------------------------------------------------
@@ -117,8 +117,8 @@ Feature: Add a category
         When the user types the text of the note
         And does not select a category
         And clicks on the button to add the new note 
-        Then the note should be added to the list of notes
-        And should have no category
+        Then the note is added to the list of notes
+        And has no category
 
 #-----------------------------------------------------------------------
 
@@ -127,9 +127,9 @@ Feature: Add a category
         And he only adds a category to that note
         When the user selects the category of the note
         And clicks on the button to add the new note 
-        Then the note should be added to the list of notes
-        But should only have category
-        And the text of the note should be empty
+        Then the note is added to the list of notes
+        But only has category
+        And the text of the note is empty
 
  
 
