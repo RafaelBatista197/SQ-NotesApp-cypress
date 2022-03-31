@@ -10,7 +10,7 @@ Feature: Add a category
 #-----------------------------------------------------------------------
    
     Scenario: Add a new category that doesn't exist yet
-        Given the user wants to add a new category
+        Given the user is on the web aplication to add a new category
         And that category is not on the list of categories
         When the user clicks on the add category button
         And an editable area appears to write the category
@@ -22,7 +22,7 @@ Feature: Add a category
 #get warning
 
     Scenario: Add a new category that already exists
-        Given the user wants to add a new category
+        Given the user is on the web aplication to add a new category
         And that category already exists 
         When the user clicks on the add category button 
         And an editable area appears to write the category
@@ -35,7 +35,7 @@ Feature: Add a category
 #get warning
 
     Scenario: Add a new empty category
-        Given the user wants to add a new category
+        Given the user is on the web aplication to add a new category
         And that category has no text 
         When the user clicks on the add category button
         And an editable area appears to write the category
@@ -47,7 +47,7 @@ Feature: Add a category
 #-----------------------------------------------------------------------
 
     Scenario Outline: Add a new category with numbers or symbols
-        Given the user wants to add a new category 
+        Given the user is on the web aplication to add a new category 
         And that category has <text>
         When the user clicks on the add category button 
         And an editable area appears to write the category
@@ -63,7 +63,7 @@ Feature: Add a category
 #-----------------------------------------------------------------------
 
     Scenario: Add a new category and cancel that action
-        Given the user wants to add a new category 
+        Given the user is on the web aplication to add a new category 
         When the user clicks on the add category button
         And an editable area appears to write the category
         And types the name of the category
@@ -74,7 +74,7 @@ Feature: Add a category
 #-----------------------------------------------------------------------
 
     Scenario: Create a note and assign an existing category
-        Given the user wants to write a new note
+        Given the user is on the web application to write a new note
         And he wants to assign a category to that note
         When the user writes text in the note
         And chooses a category from the list of categories
@@ -86,7 +86,7 @@ Feature: Add a category
 #Backtrack
 
     Scenario: Create a note and assign a category that doesn't exist yet
-        Given the user wants to write a new note
+        Given the user is on the web application to write a new note
         And he wants to assign a category to that note
         When that category is not on the list of categories
         And clicks on the add category button
@@ -112,7 +112,7 @@ Feature: Add a category
 #-----------------------------------------------------------------------
 
     Scenario: Not selecting a category when creating a new note
-        Given the user wants to write a new note
+        Given the user is on the web application to write a new note
         And he does not want to add a category to that note
         When the user types the text of the note
         And does not select a category

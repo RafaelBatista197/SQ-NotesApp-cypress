@@ -12,38 +12,18 @@ Feature: Edit an item of the list of notes
     #-------- Caminho onde é editado um item que (categoria e nota) e ambos são editados;
     #-------- Não é escrito nada na caixa da categoria, ou seja,
     #-------- já existe na lista, por isso o user vai ao spinner e escolher
-    Scenario: Click to Edit note that exists
+    
+    Scenario: Edit note successful
         Given the user is on the web application to edit a existing note
-        And the note has category
-        And the note has text
-        When the button to edit is clicked on an specific note
-        Then the note becomes editable
-
-    Scenario: Add category from list
-        Given the category becomes editable
-        When a new category is chosen from the list
-        Then the content of the new category should contain the same category text
-
-    Scenario: Edit note text
-        Given the editable area of the note text is editable
-        When new text is written or deleted on the note
-        Then the content of the note editable area contains the new text
-    #ou aqui pode-se escrever logo tambem para guardar a nota, é escolher
-
-    Scenario: Save editable note text and category successfully
-        Given the editable area of the note text contains the new text of the note
-        And the editable area of the category contains the new text of category of the note
-        When the button to update is clicked
-        Then the content of the note is updated with the new text
-        And the content of the category is updated with the new text
-
-    #-----OU----
-    Scenario: Edit note succssefully
-        Given the note becomes editable
-        When a new category is chosen from the list
-        And the user writes text in the note
-        And the button to update is clicked
-        Then the note should be update
+        And that note already has text
+        And that note already has category
+        And the user wants to edit the text
+        And edit the category to one that already exists
+        When the user clicks on the edit button
+        And selects a new category from the list of categories
+        And edits the text of the note
+        And clicks the save button
+        Then that note should now be updated on the list
 
 
 
@@ -75,7 +55,7 @@ Feature: Edit an item of the list of notes
 
     Scenario: Edit note text
         Given the editable area of the note text is editable
-        When new text is written or deleted on the note
+        When new text is editable on the note
         Then the content of the note editable area contains the new text
     #ou aqui pode-se escrever logo tambem para guardar a nota, é escolher
 
@@ -112,7 +92,7 @@ Feature: Edit an item of the list of notes
 
     Scenario: Edit note text
         Given the editable area of the note text is editable
-        When new text is written or deleted on the note
+        When new text is editable on the note
         Then the content of the note editable area contains the new text
     #ou aqui pode-se escrever logo tambem para guardar a nota, é escolher
 
@@ -137,7 +117,7 @@ Feature: Edit an item of the list of notes
 
     Scenario: Edit note text
         Given the editable area of the note text is editable
-        When new text is written or deleted on the note
+        When new text is editable on the note
         Then the content of the note editable area contains the new text
     #ou aqui pode-se escrever logo tambem para guardar a nota, é escolher
     #OU JUNTAR
@@ -167,7 +147,7 @@ Feature: Edit an item of the list of notes
 
     Scenario: Edit note text
         Given the editable area of the note text is editable
-        When new text is written or deleted on the note
+        When new text is editable on the note
         Then the content of the note editable area contains the new text
     #ou aqui pode-se escrever logo tambem para guardar a nota, é escolher
     #OU JUNTAR
@@ -236,7 +216,7 @@ Feature: Edit an item of the list of notes
 
     Scenario: Edit note text
         Given the editable area of the note text is editable
-        When new text is written or deleted on the note
+        When new text is editable on the note
         Then the content of the note editable area contains the new text
     #ou aqui pode-se escrever logo tambem para guardar a nota, é escolher
     #OU JUNTAR
