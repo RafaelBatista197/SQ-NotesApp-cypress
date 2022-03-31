@@ -6,12 +6,7 @@ Feature: Edit an item of the list of notes
     to save and another to cancel.
     The user will not be able to edit the color or the size of the text.
 
-    #VER ANDS REPETIDOS (2 ANDS POR CENA)
-    #VER TITULOS
-    #PODEMOS TER AND'S NO SCENARIO?!
-    #LINHA 192 E 205 - CENARIOS REPETIDOS?!!?
-    #VER SE OS EXAMPLES DO PRIMEIRO CENARIOS ESTÃO CORRETOS
-
+   
 
     Background:
         Given the user is on the web application to edit a existing note
@@ -39,7 +34,7 @@ Feature: Edit an item of the list of notes
             | cancel | shouldn't |
 
 
-    #-------- Caminho onde é editado um item que (categoria e nota) e ambos são editados; é escrito uma categoria
+    #-------- Caminho onde é editado um item que (categoria e nota) e ambos são editados; é escrito uma categoria (2)
     #-------- na caixa de texto que ja existe, ou seja,
     #-------- já existe na lista, por isso vai da erro
     Scenario: Edit note category to one that already exists
@@ -92,6 +87,23 @@ Feature: Edit an item of the list of notes
 
 
     #-------- Caminho onde é editado um item que tem (categoria e nota) mas só é editada a categoria
+    #-------- ou seja, o texto da nota vai continuar igual; neste caso é escrito uma categoria que
+    #-------- já existe, por isso vai dar erro e o user tem de ir ao spinner e escolher a que ja existe
+    Scenario: Edit note category to one that is wrttien but already exists
+        And that note already has text
+        And that note already has category
+        And the user wants to edit the category
+        And the category exists on the list
+        But doesn't want to edit the text
+        When the user clicks on the edit button
+        And writes a category that exists on the list
+        And clicks the save button
+        Then the application shows a warning message because category already exists
+        And that note is not updated on the list
+
+
+
+    #-------- Caminho onde é editado um item que tem (categoria e nota) mas só é editada a categoria
     #-------- ou seja, o texto da nota vai continuar igual; neste caso, categoria vai ser escolhida
     #-------- da lista que já existe, ou seja o user não vai escrever nada na categoria
     #-------- mas vai usar o spinner
@@ -107,22 +119,6 @@ Feature: Edit an item of the list of notes
         And clicks the save button
         Then that note is updated
 
-
-
-    #-------- Caminho onde é editado um item que tem (categoria e nota) mas só é editada a categoria
-    #-------- ou seja, o texto da nota vai continuar igual; neste caso é escrito uma categoria que
-    #-------- já existe, por isso vai dar erro e o user tem de ir ao spinner e escolher a que ja existe
-    Scenario: Edit note category to one that is wrttien but already exists
-        And that note already has text
-        And that note already has category
-        And the user wants to edit the category
-        And the category exists on the list
-        But doesn't want to edit the text
-        When the user clicks on the edit button
-        And writes a category that exists on the list
-        And clicks the save button
-        Then the application shows a warning message because category already exists
-        And that note is not updated on the list
 
 
 
@@ -212,33 +208,6 @@ Feature: Edit an item of the list of notes
         And clicks the save button
         Then the system shows a warning message
         And that note is not updated on the list
-
-
-
-
-
-
-    #------- Caminho onde item que só tem texto (nota) é editada a cor do texto
-    Scenario: Edit note text color
-
-        And that note already has text
-        And the user wants to edit the text color
-        When the user clicks on the edit button
-        And a new color is picked from the color pallet
-        And clicks the save button
-        Then that note is updated on the list with the new text color
-
-
-
-    #------- Caminho onde item que só tem texto (nota) é editado o tamanho do texto
-    Scenario: Edit note text size
-
-        And that note already has text
-        And the user wants to edit the text size
-        When the user clicks on the edit button
-        And the user picks a new text size from the selector
-        And clicks the save button
-        And that note is updated on the list with the new text size
 
 
 
