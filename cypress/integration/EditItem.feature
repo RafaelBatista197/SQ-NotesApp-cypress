@@ -5,199 +5,388 @@ Feature: Edit an item of the list of notes
     the user clicks on the button to edit a specific note, the text of the note should go to the
     text area where the user can edit it (the text and the category - if exists) and then update it.
 
+
+
+    #-----------------------------ULTIMA TENTATIVA/OPCAO-----------------------
     #-----------------------------------------------------------------------
-    #Caminho certo
-    Scenario: Click the Edit note button on a note
-        Given the user wants to edit a existing note
-        And the note has category or not
+    #-------- Caminho onde é editado um item que (categoria e nota) e ambos são editados;
+    #-------- Não é escrito nada na caixa da categoria, ou seja,
+    #-------- já existe na lista, por isso o user vai ao spinner e escolher
+    Scenario: Click to Edit note that exists
+        Given the user is on the web application to edit a existing note
+        And the note has category
         And the note has text
-        When the edit button is clicked on an specific note
-        Then the category text must go to the editable area
-        And the text of the note must go to the editable area
+        When the button to edit is clicked on an specific note
+        Then the note becomes editable
 
+    Scenario: Add category from list
+        Given the category becomes editable
+        When a new category is chosen from the list
+        Then the content of the new category should contain the same category text
 
-    Scenario: Edit note category successfully
-        Given the editable area of the category contains the text of category of the note
-        And editable area of the category is clicked on
-        When a new category text is writen
-        Then the content of the category editable area contains the new category
-
-
-    Scenario: Edit note text successfully
-        Given the editable area of the note text contains the text of the note
-        And editable area of the note text is clicked on
-        When new text is writen/added or deleted to the note
+    Scenario: Edit note text
+        Given the editable area of the note text is editable
+        When new text is written or deleted on the note
         Then the content of the note editable area contains the new text
-
+    #ou aqui pode-se escrever logo tambem para guardar a nota, é escolher
 
     Scenario: Save editable note text and category successfully
         Given the editable area of the note text contains the new text of the note
         And the editable area of the category contains the new text of category of the note
-        When the update button is clicked
+        When the button to update is clicked
         Then the content of the note is updated with the new text
         And the content of the category is updated with the new text
-        And the new category is added to the list of categoreis
+
+    #-----OU----
+    Scenario: Edit note succssefully
+        Given the note becomes editable
+        When a new category is chosen from the list
+        And the user writes text in the note
+        And the button to update is clicked
+        Then the note should be update
 
 
-    #Caminho onde é escolhido uma categoria da lista de categorias que já existem
-    Scenario: Click the Edit note button on a note
-        Given the user wants to edit a existing note
-        And the note has category or not
+
+
+
+    #-------- Caminho onde é editado um item que (categoria e nota) e ambos são editados; é escrito uma categoria
+    #-------- na caixa de texto que ja existe, ou seja,
+    #-------- já existe na lista, por isso vai da erro e o user tem de ir ao spinner e escolher a que ja existe
+    Scenario: Click to Edit note that exists
+        Given the user is on the web application to edit a existing note
+        And the note has category
         And the note has text
-        When the edit button is clicked on an specific note
-        Then the category text must go to the editable area
-        And the text of the note must go to the editable area
+        When the button to edit is clicked on an specific note
+        Then the note becomes editable
 
+    Scenario: Write note category that exists
+        Given the editable area of the category is editable
+        When a new category text is written
+        And the button to save category is pressed
+        And the new category exist on the list of categoreis
+        Then the system shows a messages that the catorgy alreday exists
+    #ao fazer a app, quando da isto mostra a mensagem tambem apaga o que o user escreveu na categoria
 
-    Scenario: Edit note category by choosing one from the list of categories
-        Given the editable area of the category contains the text of category of the note
-        When a new category is picked from the list of categoreis that already exist
-        Then the content of the category editable area contains the category picked from the list
+    Scenario: Add category from list
+        Given the new category exist on the list of categoreis
+        When a new category is chosen from the list
+        Then the content of the new category should contain the same category text
 
 
     Scenario: Edit note text
-        Given the editable area of the note text contains the text of the note
-        And editable area of the note text is clicked on
-        When new text is writen/added or deleted to the note
+        Given the editable area of the note text is editable
+        When new text is written or deleted on the note
         Then the content of the note editable area contains the new text
+    #ou aqui pode-se escrever logo tambem para guardar a nota, é escolher
 
 
     Scenario: Save editable note text and category successfully
         Given the editable area of the note text contains the new text of the note
         And the editable area of the category contains the new text of category of the note
-        When the update button is clicked
+        When the button to update is clicked
         Then the content of the note is updated with the new text
         And the content of the category is updated with the new text
-        And the no new category is added to the list of categoreis
 
 
 
-    #Caminho editar cor do texto
-    Scenario: Click the Edit note button on a note
-        Given the user wants to edit a existing note
-        And the note has category or not
+
+    #------- Caminho onde é editado um item que (categoria e nota) e ambos são editados; é escrito uma categoria
+    #------- na caixa de texto e não existe, ou seja,
+    #------- não existe na lista de categorias, logo não é preciso ir ao spinner, é adicionada à lista quando
+    #------- carregamos no botão de update da nota
+    Scenario: Click to Edit note that exists
+        Given the user is on the web application to edit a existing note
+        And the note has category
         And the note has text
-        When the edit button is clicked on an specific note
-        Then the category text should go to editable state
-        And the text of the note should go to the editable state
+        When the button to edit is clicked on an specific note
+        Then the note becomes editable
 
+    Scenario: Write note category that doesn't exists
+        Given the editable area of the category is editable
+        When a new category text is written
+        And the button to save category is pressed
+        And the new category doesn't exists on the list of categoreis
+        Then the new category is added to the list of categoreis
+        And the content of the category editable area contains the new category
+    #ao fazer a app, quando da isto mostra a mensagem tambem apaga o que o user escreveu na categoria
+
+    Scenario: Edit note text
+        Given the editable area of the note text is editable
+        When new text is written or deleted on the note
+        Then the content of the note editable area contains the new text
+    #ou aqui pode-se escrever logo tambem para guardar a nota, é escolher
+
+    Scenario: Save editable note text and category successfully
+        Given the editable area of the note text contains the new text of the note
+        And the editable area of the category contains the new text of category of the note
+        When the button to update is clicked
+        Then the content of the note is updated with the new text
+        And the content of the category is updated with the new text
+
+
+
+    #-------- Caminho onde é editado um item que só tem texto (nota) mas não tem categoria, e vai continuar a não ter
+    #-------- categoria, ou seja,
+    #-------- é mesmo uma nota sem categoria e só é editado o texto da nota
+    Scenario: Click to Edit note that exists
+        Given the user is on the web application to edit a existing note
+        And the note has no category
+        But the note has text
+        When the button to edit is clicked on an specific note
+        Then the note becomes editable
+
+    Scenario: Edit note text
+        Given the editable area of the note text is editable
+        When new text is written or deleted on the note
+        Then the content of the note editable area contains the new text
+    #ou aqui pode-se escrever logo tambem para guardar a nota, é escolher
+    #OU JUNTAR
+    Scenario: Save note text that was edited successfully
+        Given the editable area of the note text contains the new text of the note
+        And the editable area of the category contains no text
+        When the button to update is clicked
+        Then the content of the note is updated with the new text
+
+
+
+    #-------- Caminho onde é editado um item que tem (categoria e nota),
+    #-------- e vai ser apagada a cateogira
+    #-------- e é editado o texto da nota
+    Scenario: Click to Edit note that exists
+        Given the user is on the web application to edit a existing note
+        And the note has category
+        But the note has text
+        When the button to edit is clicked on an specific note
+        Then the note becomes editable
+
+    Scenario: Delete category text
+        Given the editable area of the category is editable
+        When a the category is deleted
+        And the button to save category is pressed
+        Then the content of the category editable area contains no text
+
+    Scenario: Edit note text
+        Given the editable area of the note text is editable
+        When new text is written or deleted on the note
+        Then the content of the note editable area contains the new text
+    #ou aqui pode-se escrever logo tambem para guardar a nota, é escolher
+    #OU JUNTAR
+    Scenario: Save note where category was deleted and text was edited successfully
+        Given the editable area of the note text contains the new text of the note
+        And the editable area of the category contains no text
+        When the button to update is clicked
+        Then the content of the note is updated with the new text
+
+
+
+    #-------- Caminho onde é editado um item que tem (categoria e nota),
+    #-------- e vai ser apagada a cateogira
+    #-------- e o texto da nota não é editado
+    Scenario: Click to Edit note that exists
+        Given the user is on the web application to edit a existing note
+        And the note has category
+        But the note has text
+        When the button to edit is clicked on an specific note
+        Then the note becomes editable
+
+    Scenario: Delete category
+        Given the editable area of the category is editable
+        When a the category is deleted
+        And the button to save category is pressed
+        Then the content of the category editable area contains no text
+    #OU JUNTAR
+    Scenario: Save note where category was deleted successfully
+        Given the editable area of the category contains no text
+        When the button to update is clicked
+        Then the note is updated
+
+
+
+    #-------- Caminho onde é um item que tem (categoria e nota),
+    #-------- vai ser apagado o texto da nota não, ou seja, só vai
+    #-------- ficar com a categoria, vai dar erro
+    Scenario: Click to Edit note that exists
+        Given the user is on the web application to edit a existing note
+        And the note has category
+        But the note has text
+        When the button to edit is clicked on an specific note
+        Then the note becomes editable
+
+    Scenario: Delete text note
+        Given the editable area of the note text is editable
+        When all the text of the note is deleted
+        Then the content of the note on the editable area contains no text
+    #OU JUNTAR
+    Scenario: Save note where text note was deleted
+        Given the editable area of the note text contains no text
+        When the button to update is clicked
+        Then the application should display an error message
+        And the note is not updated
+
+
+
+    #-------- Caminho onde um item que tem (categoria e nota) só é editado o texto da nota,
+    #-------- ou seja, a categoria vai ficar igual e o texto muda
+    Scenario: Click to Edit note that exists
+        Given the user is on the web application to edit a existing note
+        And the note has category
+        But the note has text
+        When the button to edit is clicked on an specific note
+        Then the note becomes editable
+
+    Scenario: Edit note text
+        Given the editable area of the note text is editable
+        When new text is written or deleted on the note
+        Then the content of the note editable area contains the new text
+    #ou aqui pode-se escrever logo tambem para guardar a nota, é escolher
+    #OU JUNTAR
+    Scenario: Save note text that was edited successfully
+        Given the editable area of the note text contains the new text of the note
+        When the button to update is clicked
+        Then the content of the note is updated with the new text
+
+
+
+    #-------- Caminho onde é editado um item que tem (categoria e nota) mas só é editada a categoria
+    #-------- ou seja, o texto da nota vai continuar igual; neste caso, categoria vai ser escolhida
+    #-------- da lista que já existe, ou seja o user não vai escrever nada na categoria
+    #-------- mas vai usar o spinner
+    Scenario: Click to Edit note that exists
+        Given the user is on the web application to edit a existing note
+        And the note has category
+        And the note has text
+        When the button to edit is clicked on an specific note
+        Then the note becomes editable
+
+    Scenario: Add category from list
+        Given the category becomes editable
+        When a new category is chosen from the list
+        Then the content of the new category should contain the same category text
+    #OU JUNTAR TUDO
+    Scenario: Save category that was edited successfully
+        Given the editable area of the category contains the new text of category of the note
+        When the button to update is clicked
+        Then the content of the category is updated with the new category
+
+
+
+    #-------- Caminho onde é editado um item que tem (categoria e nota) mas só é editada a categoria
+    #-------- ou seja, o texto da nota vai continuar igual; neste caso é escrito uma categoria que
+    #-------- já existe, por isso vai dar erro e o user tem de ir ao spinner e escolher a que ja existe
+    Scenario: Click to Edit note that exists
+        Given the user is on the web application to edit a existing note
+        And the note has category
+        And the note has text
+        When the button to edit is clicked on an specific note
+        Then the note becomes editable
+
+    Scenario: Write note category that exists
+        Given the editable area of the category is editable
+        When a new category text is written
+        And the button to save category is pressed
+        And the new category exist on the list of categoreis
+        Then the system shows a messages that the catorgy alreday exists
+    #ao fazer a app, quando da isto mostra a mensagem tambem apaga o que o user escreveu na categoria
+
+    Scenario: Choose category from list
+        Given the new category exist on the list of categoreis
+        When a new category is chosen from the list
+        Then the content of the new category should contain the same category text
+    #OU JUNTAR TUDO
+    Scenario: Save category that was edited successfully
+        Given the editable area of the category contains the new text of category of the note
+        When the button to update is clicked
+        Then the content of the category is updated with the new category
+
+
+    #------- Caminho onde item que só tem texto (nota) é editada a cor do texto - talvez tentar juntar estes
+    Scenario: Click to Edit note that exists
+        Given the user is on the web application to edit a existing note
+        And the note has text
+        When the button to edit is clicked on an specific note
+        Then the note becomes editable
 
     Scenario: Edit note text color
-        Given the editable area of the note text contains the text of the note
-        And the editable area of the note text is clicked on
+        Given the editable area of the note text is editable
         When a new color is picked from the color pallet
         Then the color of the content of the note in the editable area changes
-        And the new color is given "Pick a Color" selecter too
+        And the new color is given to "Pick a Color" selector
 
-
-    Scenario: Save note with new color successfully
+    Scenario: Save note text with new color successfully
         Given the editable area of the note text contains the new text with the new color
-        When the update button is clicked
+        When the button to updated is clicked
         Then the content of the note is updated with the new text color
 
 
 
-    #Caminho editar tamanho do texto
-    Scenario: Click the Edit note button on a note
-        Given the user wants to edit a existing note
-        And the note has category or not
+    #------- Caminho onde item que só tem texto (nota) é editado o tamanho do texto - talvez tentar juntar estes
+    Scenario: Click to Edit note that exists
+        Given the user is on the web application to edit a existing note
         And the note has text
-        When the edit button is clicked on an specific note
-        Then the category text should go to editable state
-        And the text of the note should go to the editable state
+        When the button to edit is clicked on an specific note
+        Then the note becomes editable
 
-
-    Scenario: Edit note text size
-        Given the editable area of the note text contains the text of the note
-        And the editable area of the note text is clicked on
+    Scenario: Edit note text color
+        Given the editable area of the note text is editable
         When a new text size is chosen from the "Size" selector
         Then the text size of the content of the note in the editable area changes
         And the new value of the text size is given to the "Size" selector too
 
-
-    Scenario: Save note with new color successfully
-        Given the editable area of the note text contains the new text with the new color
-        When the update button is clicked
+    Scenario: Save note text with new size successfully
+        Given the editable area of the note text contains the new text with the new size
+        When the button to updated is clicked
         Then the content of the note is updated with the new text size
 
 
-    #Caminho em que a catagoria de uma nota nao é editada, só é editado o texto da nota
-    Scenario: Click the Edit note button on a note
-        Given the user wants to edit a existing note
-        And the note has category or not
+
+    #----- Caminho em que é a editção da nota é cancelada
+    #Caminhos possiveis:
+    #tas a editar a categoria e cancelas - logo ai tens 2 -
+    #1º caso tenhas escrito uma categoria nova na caixa da categoria e carregas no save categoria, isso vai adicionar a
+    #categoria nova à lista; logo se cancelas vais ter de eliminar isso da lista e meter o que estava antes
+    #2º caso tenhas escolhido do spinner, apenas apaga e deixa o que estava
+    #caso estejas a editar o texto da nota e cancelas
+    #caso ja tenhas editado os dois e cancelas
+    Scenario:
+
+
+
+    #------- Caminho onde é guardada uma nota sem sem categoria e sem texto na nota
+    Scenario: Click to Edit note that exists
+        Given the user is on the web application to edit a existing note
+        And the note has category
         And the note has text
-        When the edit button is clicked on an specific note
-        Then the category text must go to the editable area
-        And the text of the note must go to the editable area
+        When the button to edit is clicked on an specific note
+        Then the note becomes editable
 
+    Scenario: Delete category text
+        Given the editable area of the category is editable
+        When a the category is deleted
+        And the button to save category is pressed
+        Then the content of the category editable area contains no text
 
-    Scenario: Edit note text successfully
-        Given the editable area of the note text contains the text of the note
-        And editable area of the note text is clicked on
-        When new text is writen/added or deleted to the note
-        Then the content of the note editable area contains the new text
+    Scenario: Delete text note
+        Given the editable area of the note text is editable
+        When all the text of the note is deleted
+        Then the content of the note on the editable area contains no text
 
-
-    Scenario: Save editable note text with new text but same category successfully
-        Given the editable area of the note text contains the new text of the note
-        And the editable area of the category contains the same category of the note
-        When the update button is clicked
-        Then the content of the note is updated with the new text
-        And the content of the category is the same as before
-        And no new category is added to the list of categoreis
-
-
-
-    #Caminho em que a catagoria de uma nota é editada, mas o texto da nota não é editado
-    Scenario: Click the Edit note button on a note
-        Given the user wants to edit a existing note
-        And the note has category if exists
-        And the note has text
-        When the edit button is clicked on an specific note
-        Then the category text must go to the editable area
-        And the text of the note must go to the editable area
-
-
-    Scenario: Edit note category successfully
-        Given the editable area of the category contains the text of category of the note
-        And editable area of the category is clicked on
-        When a new category text is writen/added
-        Then the content of the category editable area contains the new category
-
-
-    Scenario: Save editable note text with new category but same text of the note successfully
-        Given the editable area of the note text contains the new text of category of the note
-        And the editable area of the category contains the same category of the note
-        When the update button is clicked
-        Then the content of the note is the same as before
-        And the content of the category is updated with the new text
-        And the new category is added to the list of categoreis
-
-
-    #Caminho em que a catagoria de uma nota é editada e escolhida da lista de categorias, mas o texto da nota não é editado
-    Scenario: Click the Edit note button on a note
-        Given the user wants to edit a existing note
-        And the note has category if exists
-        And the note has text
-        When the edit button is clicked on an specific note
-        Then the category text must go to the editable area
-        And the text of the note must go to the editable area
-
-
-    Scenario: Edit note category by choosing one from the list of categories
-        Given the editable area of the category contains the text of category of the note
-        When a new category is picked from the list of categoreis that already exist
-        Then the content of the category editable area contains the category picked from the list
+    Scenario: Save emptey note with no category
+        Given the editable area of the note text contains the no text
+        And the editable area of the category contains no text
+        When the button to update is clicked
+        Then the application should display an error message
+        And the note is not updated
 
 
 
-    Scenario: Save editable note text with new category but same text of the note successfully
-        Given the editable area of the note text contains the new text of category of the note
-        And the editable area of the category contains the same category of the note
-        When the update button is clicked
-        Then the content of the note is the same as before
-        And the content of the category is updated with the new text
 
+
+
+
+
+
+    #--------SERA QUE É PRECISO? PORQUE COMO JA ESTAMOS A VALIDAR QUE É PERMITIDO NUMEROS E CARACTRES NA CRIAÇÃO DA
+    #CATEGORIA, PENSO QUE NÃO SEJA PRECISO-------------------
 
     #Caminho em que a catagoria de uma nota é editada com numeros
     Scenario: Click the Edit note button on a note
@@ -212,7 +401,7 @@ Feature: Edit an item of the list of notes
     Scenario: Edit note category with numbers
         Given the editable area of the category contains the text of category of the note
         And editable area of the category is clicked on
-        When a new category text is writen with numbers
+        When a new category text is written with numbers
         Then the content of the category editable area contains the new category with numbers
 
 
@@ -236,7 +425,7 @@ Feature: Edit an item of the list of notes
     Scenario: Edit note category with special characters
         Given the editable area of the category contains the text of category of the note
         And editable area of the category is clicked on
-        When a new category text is writen with special characters
+        When a new category text is written with special characters
         Then the content of the category editable area contains the new category with special characters
 
 
@@ -247,127 +436,3 @@ Feature: Edit an item of the list of notes
         And the new category is added to the list of categoreis
 
 
-
-    #Caminho em que é cancela a editção da nota
-    Scenario: Click the Edit note button on a note
-        Given the user wants to edit a existing note
-        And the note has category or not
-        And the note has text
-        When the edit button is clicked on an specific note
-        Then the category text must go to the editable area
-        And the text of the note must go to the editable area
-
-
-    Scenario: Edit note category successfully
-        Given the editable area of the category contains the text of category of the note
-        And editable area of the category is clicked on
-        When a new category text is writen/added
-        Then the content of the category editable area contains the new category
-
-
-    Scenario: Edit note text successfully
-        Given the editable area of the note text contains the text of the note
-        And editable area of the note text is clicked on
-        When new text is writen/added or deleted to the note
-        Then the content of the note editable area contains the new text
-
-
-    Scenario: Cancel the edition of the note
-        Given the editable area of the note text contains the new text of the note
-        And the editable area of the category contains the new text of category of the note
-        When the cancel button is clicked
-        Then the content of the note is not updated with the new text
-        And the content of the category is not updated with the new text
-        And the new category is not added to the list of categoreis
-
-
-    #Cenario do caimnho quando nota é guardade sem categoria
-    Scenario: Click the Edit note button on a note that only has note text
-        Given the user wants to edit a existing note
-        And the note area has text
-        When the edit button is clicked on an specific note
-        Then the text of the note must go to the editable area
-
-
-    Scenario: Edit note text successfully
-        Given the editable area of the note text contains the text of the note
-        And editable area of the note text is clicked on
-        When new text is writen/added or deleted to the note
-        Then the content of the note editable area contains the new text
-
-
-    Scenario: Save editable note text with no category successfully
-        Given the editable area of the note text contains the new text of the note
-        And the editable area of the category contains no text
-        When the update button is clicked
-        Then the content of the note is updated with the new text
-        And no new category is added to the list of categoreis
-
-
-    #Cenario do caimnho quando nota é guardada com categoria mas sem texto da nota
-    Scenario: Click the Edit note button on a existing note
-        Given the user wants to edit a existing note
-        And the note has category if exists
-        And the note has text
-        When the edit button is clicked on an specific note
-        Then the category text must go to the editable area if exists
-        And the text of the note must go to the editable area
-
-
-    Scenario: Edit note category successfully
-        Given the editable area of the category contains the text of category of the note
-        When editable area of the category is clicked on
-        And a new category text is added
-        Then the content of the category editable area contains the new category
-
-
-    Scenario: Edit note text not successfully
-        Given the editable area of the note text contains the text of the note
-        And editable area of the note text is clicked on
-        When all the text of the note is deleted
-        Then the content of the note on the editable area contains no text
-
-
-    Scenario: Save editable note text with category and no text un-successfully
-        Given the editable area of the note text contains the no text
-        And the editable area of the category contains new category text
-        When the update button is clicked
-        And the note is not updated
-        Then the application should display "Error! Note must have text." error message
-        And the note is not updated
-        And no new category is added to the list of categoreis
-
-
-
-
-    #Cenario do caimnho quando nota é guardada sem categoria e sem texto da nota
-    Scenario: Click the Edit note button on a existing note
-        Given the user wants to edit a existing note
-        And the note has category if exists
-        And the note has text
-        When the edit button is clicked on an specific note
-        Then the category text must go to the editable area if exists
-        And the text of the note must go to the editable area
-
-
-    Scenario: Edit note text with no category text
-        Given the editable area of the category contains the text of category of the note if exists
-        And editable area of the category is clicked on
-        When category text is all deleted
-        Then the text of the editable area of the category is updated with no text
-
-
-    Scenario: Edit note text with no text
-        Given the editable area of the note text contains the text of the note
-        And editable area of the note text is clicked on
-        When all the text of the note is deleted
-        Then the content of the note on the editable area contains no text
-
-
-    Scenario: Save editable note text with no category and no text un-successfully
-        Given the editable area of the note text contains the no text
-        And the editable area of the category contains no category text
-        When the update button is clicked
-        Then the application should display "Error! Note must have text." error message
-        And the note is not updated
-        And no new category is added to the list of categoreis
