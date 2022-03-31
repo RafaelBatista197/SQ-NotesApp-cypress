@@ -6,14 +6,14 @@ Feature: Edit an item of the list of notes
     text area where the user can edit it (the text and the category - if exists) and then update it.
 
 
-
-    #-----------------------------ULTIMA TENTATIVA/OPCAO-----------------------
     #-----------------------------------------------------------------------
-    #-------- Caminho onde é editado um item que (categoria e nota) e ambos são editados;
-    #-------- Não é escrito nada na caixa da categoria, ou seja,
-    #-------- já existe na lista, por isso o user vai ao spinner e escolher
+    #-------- Caminho onde é editado um item que onde categoria e nota são editados;
+    #-------- Num cenário o user dá save, no outro dá cancel
+    #-------- Este cenário é feito já com a edição de ambas as partes (categoria e texto da nota), 
+    #-------- porque assim se funciona duma maneira para os 2, então não é preciso tar a fazer mais cenários, para quando só se edita a categoria e dá (save e cancel)
+    #--------, o mesmo para o texto
     
-    Scenario: Edit note successful
+    Scenario: Edit the text and category of the note
         Given the user is on the web application to edit a existing note
         And that note already has text
         And that note already has category
@@ -22,19 +22,13 @@ Feature: Edit an item of the list of notes
         When the user clicks on the edit button
         And selects a new category from the list of categories
         And edits the text of the note
-        And clicks the save button
-        Then that note should now be updated on the list
+        And clicks the <action> button
+        Then that note <outcome> be updated on the list
 
-#----- Caminho em que é a editção da nota é cancelada
-    #Caminhos possiveis:
-    #tas a editar a categoria e cancelas - logo ai tens 2 -
-    #1º caso tenhas escrito uma categoria nova na caixa da categoria e carregas no save categoria, isso vai adicionar a
-    #categoria nova à lista; logo se cancelas vais ter de eliminar isso da lista e meter o que estava antes
-    #2º caso tenhas escolhido do spinner, apenas apaga e deixa o que estava
-    #caso estejas a editar o texto da nota e cancelas
-    #caso ja tenhas editado os dois e cancelas
-    Scenario:
-
+        Examples:
+        |    action   |    outcome   |
+        |    save     |    should    |
+        |    cancel   |   shouldn't  |
 
 
     #-------- Caminho onde é editado um item que (categoria e nota) e ambos são editados; é escrito uma categoria
