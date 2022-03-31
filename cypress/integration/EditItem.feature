@@ -25,7 +25,15 @@ Feature: Edit an item of the list of notes
         And clicks the save button
         Then that note should now be updated on the list
 
-
+#----- Caminho em que é a editção da nota é cancelada
+    #Caminhos possiveis:
+    #tas a editar a categoria e cancelas - logo ai tens 2 -
+    #1º caso tenhas escrito uma categoria nova na caixa da categoria e carregas no save categoria, isso vai adicionar a
+    #categoria nova à lista; logo se cancelas vais ter de eliminar isso da lista e meter o que estava antes
+    #2º caso tenhas escolhido do spinner, apenas apaga e deixa o que estava
+    #caso estejas a editar o texto da nota e cancelas
+    #caso ja tenhas editado os dois e cancelas
+    Scenario:
 
 
 
@@ -319,18 +327,6 @@ Feature: Edit an item of the list of notes
 
 
 
-    #----- Caminho em que é a editção da nota é cancelada
-    #Caminhos possiveis:
-    #tas a editar a categoria e cancelas - logo ai tens 2 -
-    #1º caso tenhas escrito uma categoria nova na caixa da categoria e carregas no save categoria, isso vai adicionar a
-    #categoria nova à lista; logo se cancelas vais ter de eliminar isso da lista e meter o que estava antes
-    #2º caso tenhas escolhido do spinner, apenas apaga e deixa o que estava
-    #caso estejas a editar o texto da nota e cancelas
-    #caso ja tenhas editado os dois e cancelas
-    Scenario:
-
-
-
     #------- Caminho onde é guardada uma nota sem sem categoria e sem texto na nota
     Scenario: Click to Edit note that exists
         Given the user is on the web application to edit a existing note
@@ -358,61 +354,5 @@ Feature: Edit an item of the list of notes
         And the note is not updated
 
 
-
-
-
-
-
-
-
-    #--------SERA QUE É PRECISO? PORQUE COMO JA ESTAMOS A VALIDAR QUE É PERMITIDO NUMEROS E CARACTRES NA CRIAÇÃO DA
-    #CATEGORIA, PENSO QUE NÃO SEJA PRECISO-------------------
-
-    #Caminho em que a catagoria de uma nota é editada com numeros
-    Scenario: Click the Edit note button on a note
-        Given the user wants to edit a existing note
-        And the note has category if exists
-        And the note has text
-        When the edit button is clicked on an specific note
-        Then the category text must go to the editable area
-        And the text of the note must go to the editable area
-
-
-    Scenario: Edit note category with numbers
-        Given the editable area of the category contains the text of category of the note
-        And editable area of the category is clicked on
-        When a new category text is written with numbers
-        Then the content of the category editable area contains the new category with numbers
-
-
-    Scenario: Save editable note text with new category successfully
-        Given the editable area of the category contains the new text of category of the note
-        When the update button is clicked
-        Then the content of the category is updated with the new text
-        And the new category is added to the list of categoreis
-
-
-    #Caminho em que a catagoria de uma nota é editada com caracters especiais
-    Scenario: Click the Edit note button on a note
-        Given the user wants to edit a existing note
-        And the note has category if exists
-        And the note has text
-        When the edit button is clicked on an specific note
-        Then the category text must go to the editable area
-        And the text of the note must go to the editable area
-
-
-    Scenario: Edit note category with special characters
-        Given the editable area of the category contains the text of category of the note
-        And editable area of the category is clicked on
-        When a new category text is written with special characters
-        Then the content of the category editable area contains the new category with special characters
-
-
-    Scenario: Save editable note text with new category successfully
-        Given the editable area of the category contains the new text of category of the note
-        When the update button is clicked
-        Then the content of the category is updated with the new text
-        And the new category is added to the list of categoreis
 
 
