@@ -120,5 +120,16 @@ Feature: Add a category
         Then the note should be added to the list of notes
         And should have no category
 
+#-----------------------------------------------------------------------
+
+    Scenario: Only selecting a category when creating a new note
+        Given the user is on the web application to write a new note
+        And he only adds a category to that note
+        When the user selects the category of the note
+        And clicks on the button to add the new note 
+        Then the note should be added to the list of notes
+        But should only have category
+        And the text of the note should be empty
+
  
 
