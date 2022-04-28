@@ -17,5 +17,4 @@ echo 'Running automated tests' }
 echo 'Releasing to production' }
 } }
 
-
 }
