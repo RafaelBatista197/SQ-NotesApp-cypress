@@ -22,5 +22,5 @@
   },
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": true
-   }
+  }
 }
