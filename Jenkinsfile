@@ -13,14 +13,32 @@ pipeline{
                     makeEmptyDirs: false, 
                     noDefaultExcludes: false, 
                     patternSeparator: '[, ]+', 
-                    remoteDirectory: 'tests', 
+                    remoteDirectory: 'notes-app', 
                     remoteDirectorySDF: false,
                     removePrefix: '', 
-                    sourceFiles: '**/*')], 
+                    sourceFiles: 'app/**')], 
                 usePromotionTimestamp: false, 
                 useWorkspaceInPromotion: false, 
                 verbose: true)])
             }
         }
+        stage('Run automated tests') {
+            steps {
+                echo 'Running automated tests' 
+            }
+        }
+        stage('Perform manual testing') {
+            steps {
+                timeout(activity: true, time: 5) { 
+                    input 'Proceed to production?'
+                }
+            }
+        }
+        stage('Release to production') {
+            steps {
+                echo 'Releasing to production' 
+            }
+        }
     }
+
 }
