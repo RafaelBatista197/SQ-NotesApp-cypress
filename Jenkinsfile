@@ -13,7 +13,7 @@ pipeline{
                     makeEmptyDirs: false, 
                     noDefaultExcludes: false, 
                     patternSeparator: '[, ]+', 
-                    remoteDirectory: 'notes-app', 
+                    remoteDirectory: '', 
                     remoteDirectorySDF: false,
                     removePrefix: '', 
                     sourceFiles: 'app/**')], 
