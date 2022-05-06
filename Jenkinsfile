@@ -17,9 +17,9 @@ pipeline{
                     sshTransfer(cleanRemote: false, 
                     excludes: '', 
                     execCommand: '''
-                                    cd project/app
-                                    http-server 
-                                    pm2 restart start''', 
+                    cd project/app
+                    http-server 
+                    pm2 restart start''', 
                     execTimeout: 120000, 
                     flatten: false, 
                     makeEmptyDirs: false, 
