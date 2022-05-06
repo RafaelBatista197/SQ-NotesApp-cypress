@@ -7,7 +7,8 @@ pipeline{
     parameters{
         string(name: 'SPEC', defaultValue:"cypress/integration/3-notes-app-tests/**", description: "Enter the cypress script path that you want to execute")
         choice(name: 'BROWSER', choices:['electron', 'chrome', 'edge', 'firefox'], description: "Select the browser to be used in your cypress tests")
-  
+    }
+
    stages {
         stage('Build/Deploy app to staging') {
             steps {
