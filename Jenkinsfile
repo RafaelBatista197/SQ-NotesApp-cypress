@@ -32,10 +32,10 @@ pipeline{
             }
         }
         stage('Run automated tests') {
-            steps {
+            /*steps {
                 echo 'Running automated tests' 
-            }
-            /*
+            }*/
+            
             steps {
                 sh 'npm prune'
                 sh 'npm cache clean --force'
@@ -59,7 +59,7 @@ pipeline{
                             reportTitles: 'The Report'])
 
                 }
-            }*/
+            }
         }
         stage('Perform manual testing') {
             steps {
