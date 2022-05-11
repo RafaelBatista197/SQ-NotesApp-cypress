@@ -1,12 +1,29 @@
 pipeline{
    agent any
-    stages {
+   stages {
         stage('Build/Deploy app to staging') {
             steps {
-                echo 'Building/Deploying app to staging'
-            } 
+                sshPublisher(publishers: [sshPublisherDesc(configName: 'staging', 
+                transfers: [
+                    sshTransfer(cleanRemote: false, 
+                    excludes: '', 
+                    execCommand: '''cd app/
+                                    http-server . &''', 
+                    execTimeout: 120000, 
+                    flatten: false, 
+                    makeEmptyDirs: false, 
+                    noDefaultExcludes: false, 
+                    patternSeparator: '[, ]+', 
+                    remoteDirectory: '', 
+                    remoteDirectorySDF: false,
+                    removePrefix: '', 
+                    sourceFiles: 'app/**')], 
+                usePromotionTimestamp: false, 
+                useWorkspaceInPromotion: false, 
+                verbose: true)])
+            }
         }
-        stage('Run automated tests') { 
+        stage('Run automated tests') {
             steps {
                 echo 'Running automated tests' 
             }
@@ -16,12 +33,13 @@ pipeline{
                 timeout(activity: true, time: 5) { 
                     input 'Proceed to production?'
                 }
-            } 
+            }
         }
         stage('Release to production') {
             steps {
-                echo 'Releasing to production'
+                echo 'Releasing to production' 
             }
-        } 
+        }
     }
+
 }
