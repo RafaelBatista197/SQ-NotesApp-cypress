@@ -7,8 +7,7 @@ pipeline{
                 transfers: [
                     sshTransfer(cleanRemote: false, 
                     excludes: '', 
-                    execCommand: '''
-                                    ls''', 
+                    execCommand: 'echo "Replace me by your build/install scripts"', 
                     execTimeout: 120000, 
                     flatten: false, 
                     makeEmptyDirs: false, 
