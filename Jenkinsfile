@@ -8,7 +8,6 @@ pipeline{
                     sshTransfer(cleanRemote: false, 
                     excludes: '', 
                     execCommand: '''
-                                    cd app/
                                     http-server
                                     pm2 restart start''', 
                     execTimeout: 120000, 
