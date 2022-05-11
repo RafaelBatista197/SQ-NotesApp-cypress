@@ -8,8 +8,7 @@ pipeline{
                     sshTransfer(cleanRemote: false, 
                     excludes: '', 
                     execCommand: '''
-                                    ls
-                                    forever start -c http-server''', 
+                                    ls''', 
                     execTimeout: 120000, 
                     flatten: false, 
                     makeEmptyDirs: false, 
