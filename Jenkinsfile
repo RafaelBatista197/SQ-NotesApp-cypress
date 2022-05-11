@@ -32,17 +32,17 @@ pipeline{
             }
         }
         stage('Run automated tests') {
-            steps {
+           /* steps {
                 echo 'Running automated tests' 
-            }
-            /*
+            }*/
+            
             steps {
                 sh 'npm prune'
                 sh 'npm cache clean --force'
                 sh 'npm i'
                 sh 'npm install --save-dev mochawesome mochawesome-merge mochawesome-report-generator'
                 sh 'rm -f mochawesome.json'
-                sh 'npx cypress run --headless --config baseUrl="http://34.79.192.59:8080" --browser chrome --spec ${SPEC} --reporter mochawesome'
+                sh 'npx cypress run --headless --config baseUrl="http://34.79.192.59:8108" --browser chrome --spec ${SPEC} --reporter mochawesome'
                 sh 'npx mochawesome-merge cypress/results/*.json -o mochawesome-report/mochawesome.json'
                 sh 'npx marge mochawesome-report/mochawesome.json' 
             }
@@ -59,7 +59,7 @@ pipeline{
                             reportTitles: 'The Report'])
 
                 }
-            }*/
+            }
         }
         stage('Perform manual testing') {
             steps {
