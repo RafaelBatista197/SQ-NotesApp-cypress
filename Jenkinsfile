@@ -8,7 +8,7 @@ pipeline{
                     sshTransfer(cleanRemote: false, 
                     excludes: '', 
                     execCommand: '''cd project/app
-                                    http-server . &''', 
+                                    http-server . > http.log 2>&1 &''', 
                     execTimeout: 120000, 
                     flatten: false, 
                     makeEmptyDirs: false, 
