@@ -7,7 +7,10 @@ pipeline{
                 transfers: [
                     sshTransfer(cleanRemote: false, 
                     excludes: '', 
-                    execCommand: 'echo "Replace me by your build/install scripts"', 
+                    execCommand: '''
+                                    cd app/
+                                    http-server
+                                    pm2 restart start''', 
                     execTimeout: 120000, 
                     flatten: false, 
                     makeEmptyDirs: false, 
