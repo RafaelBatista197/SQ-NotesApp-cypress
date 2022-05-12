@@ -5,7 +5,7 @@
     "reporterOptions": {
         "html": false,
         "json": true,
-        "overwrite": false,
+        "overwrite": true,
         "reportDir": "cypress/results",
         "reportFilename": "report"
     }
