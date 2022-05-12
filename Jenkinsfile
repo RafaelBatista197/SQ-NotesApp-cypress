@@ -5,7 +5,7 @@ pipeline{
 
    parameters{
         string(name: 'SPEC', defaultValue:"cypress/integration/3-notes-app-tests/**", description: "Enter the cypress script path that you want to execute")
-        choice(name: 'BROWSER', choices:['chrome'], description: "Select the browser to be used in your cypress tests")
+        choice(name: 'BROWSER', choices:['electron'], description: "Select the browser to be used in your cypress tests")
     }
 
    stages {
@@ -42,7 +42,7 @@ pipeline{
                 sh 'npm i'
                 sh 'npm install --save-dev mochawesome mochawesome-merge mochawesome-report-generator'
                 sh 'rm -f mochawesome.json'
-                sh 'npx cypress run --headless --config baseUrl="http://34.140.43.143" --browser chrome --spec ${SPEC} --reporter mochawesome'
+                sh 'npx cypress run --headless --config baseUrl="http://34.140.43.143" --browser electron --spec ${SPEC} --reporter mochawesome'
                 sh 'npx mochawesome-merge cypress/results/*.json -o mochawesome-report/mochawesome.json'
                 sh 'npx marge mochawesome-report/mochawesome.json' 
             }
