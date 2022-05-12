@@ -70,7 +70,23 @@ pipeline{
         }
         stage('Release to production') {
             steps {
-                echo 'Releasing to production' 
+                sshPublisher(publishers: [sshPublisherDesc(configName: 'production', 
+                transfers: [
+                    sshTransfer(cleanRemote: false, 
+                    excludes: '', 
+                    execCommand: '''sudo mv -v ~/project/app/* /var/www/html''', 
+                    execTimeout: 120000, 
+                    flatten: false, 
+                    makeEmptyDirs: false, 
+                    noDefaultExcludes: false, 
+                    patternSeparator: '[, ]+', 
+                    remoteDirectory: '', 
+                    remoteDirectorySDF: false,
+                    removePrefix: '', 
+                    sourceFiles: 'app/**')], 
+                usePromotionTimestamp: false, 
+                useWorkspaceInPromotion: false, 
+                verbose: true)])
             }
         }
     }
