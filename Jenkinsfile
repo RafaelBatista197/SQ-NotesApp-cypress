@@ -31,9 +31,9 @@ pipeline{
             }
         }
         stage('Run automated tests') {
-            steps {
+            /*steps {
                 echo 'Running automated tests' 
-            }
+            }*/
             
             
             steps {
