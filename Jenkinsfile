@@ -31,11 +31,6 @@ pipeline{
             }
         }
         stage('Run automated tests') {
-            /*steps {
-                echo 'Running automated tests' 
-            }*/
-            
-            
             steps {
                 sh 'npm prune'
                 sh 'npm cache clean --force'
