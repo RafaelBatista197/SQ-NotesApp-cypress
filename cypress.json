@@ -6,7 +6,6 @@
         "html": true,
         "json": true,
         "reportDir": "cypress/results",
-        "reportFilename": "report",
-        "overwrite": true
+        "reportFilename": "report"
     }
   }
