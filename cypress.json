@@ -1,3 +1,12 @@
 {
-    "experimentalStudio": true
-}
+    "experimentalStudio": true,
+
+    "reporter": "mochawesome",
+    "reporterOptions": {
+        "html": true,
+        "json": true,
+        "reportDir": "cypress/results",
+        "reportFilename": "report",
+        "overwrite": true
+    }
+  }
