@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 describe('Tests to be done on "Notes App', () => {
     beforeEach(() => {
-        cy.visit('http://34.140.43.143')
+        cy.visit('http://localhost:8080')
 
         cy.get('h1').contains("Notes App")
     })

@@ -1,5 +1,6 @@
 {
     "experimentalStudio": true,
+    "testFiles": "**/*.{feature,features}",
 
     "reporter": "mochawesome",
     "reporterOptions": {

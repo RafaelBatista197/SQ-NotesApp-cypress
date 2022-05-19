@@ -9,14 +9,13 @@ Feature: Add a category
 
 # #-----------------------------------------------------------------------
    
-#     Scenario: Add a new category that doesn't exist yet
-#         Given the user is on the web aplication to add a new category
-#         And that category is not on the list of categories
-#         When the user clicks on the add category button
-#         And an editable area appears to write the category
-#         And types the category
-#         And clicks on the confirm button
-#         Then the new category is added to the list of categories
+    Scenario: Add a new category that doesn't exist yet
+        Given the user is on the web aplication to add a new category
+        And that category is not on the list of categories
+        When the user goes to add a new category
+        And types the new category
+        And clicks on the confirm button
+        Then the new category is added to the list of categories
 
 # #-----------------------------------------------------------------------
 # #get warning
@@ -60,16 +59,6 @@ Feature: Add a category
 #         |  numbers  |   59213   |
 #         |  symbols  |   !#%&/   |
 
-# #-----------------------------------------------------------------------
-
-#     Scenario: Add a new category and cancel that action
-#         Given the user is on the web aplication to add a new category 
-#         When the user clicks on the add category button
-#         And an editable area appears to write the category
-#         And types the name of the category
-#         And clicks on the cancel button
-#         Then the new category is not be added to the list of categories
-#         And the text written on the textarea for the new category is cleaned
 
 # #-----------------------------------------------------------------------
 

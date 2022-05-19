@@ -3,6 +3,9 @@ const textArea = document.querySelector('.text-area textarea');
 const notes = document.querySelector('.notes');
 const colorInput =document.querySelector('#color');
 const sizeInput = document.querySelector('#size');
+const addCategoryBtn = document.querySelector('#buttonAddCategory');
+const newCategoryText = document.querySelector('#categoryText')
+const noteCategory = document.querySelector('#category');
 
 // Adding Notes by clocking the Add button.
 //TEST COMMENT JENKINS2
@@ -38,4 +41,17 @@ colorInput.addEventListener('change',()=>{
 // Changing the font size of the text.
 sizeInput.addEventListener('change',()=>{
     textArea.style.fontSize = sizeInput.value + 'px';
+});
+
+//Add a new category to the spinner of categories
+addCategoryBtn.addEventListener('click',(e)=>{
+    if(newCategoryText.value === ''){
+        alert('The category must have some text!');
+        box.remove();
+    }else{
+        var opt = document.createElement('option');
+        opt.value = newCategoryText.value;
+        opt.innerHTML = newCategoryText.value;
+        noteCategory.appendChild(opt);
+    }
 });

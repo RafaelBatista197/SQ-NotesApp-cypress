@@ -92,7 +92,7 @@ label{
     background: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     padding: 15px 10px;
-    margin: 15px 0;
+    margin: 1px 0;
     position: relative;
     height: auto;
     animation: scale 0.4s;
@@ -117,4 +117,150 @@ label{
     background: none;
     cursor: pointer;
     outline: none;
+}
+
+/* part for add */
+
+#categorylabel{
+    position: absolute;
+    bottom: -50px;
+    left: 250px;
+}
+#category{
+    position: absolute;
+    bottom: -50px;
+    left: 320px;
+    width: 150px;
+}
+#addCategory{
+    height:100%;
+    width:50%;
+    position:absolute;
+    top:0%;
+    left:0%;
+    border-style: hidden;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#buttonAddCategory{
+    position: absolute;
+    padding: 10px 30px;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 13px;
+    color: white;
+    background: rgb(11, 182, 11);
+    font-weight: bold;
+    margin-top: 10px;
+    right: 45%;
+    top: 15%;
+}
+
+
+
+/* part for edit */
+
+.box{
+    background: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 15px 10px;
+    margin: 0px 0;
+    position: relative;
+    height: auto;
+    animation: scale 0.4s;
+}
+@keyframes scale{
+    from{
+        transform: scale(0);
+    }
+    to{
+        transform: scale(1);
+    }
+}
+.box p{
+    font-size: 17px;
+    font-family: sans-serif;
+    margin-right: 250px;
+}
+.notes button{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    outline: none;
+}
+
+ .note{
+    width: 100%;
+    height:fit-content;
+    margin-top: 15px;
+    background: rgb(63, 187, 22);
+} 
+
+
+.grid { 
+    display: grid;
+    grid-template-rows: 7rem 7rem;
+    grid-template-areas:
+    "s3"
+    "s4";
+}
+
+.s3 { 
+    grid-area: s3;
+    background-color: #0030FF;
+}
+.s4 {
+    grid-area: s4;
+    background-color: #FF00E4;
+}
+
+#button-edit {
+    position: inherit;
+    width: 80px;
+    padding: 5px;
+    margin: 5px 0px 40px;
+    background-color: #ff7e00;
+    outline: none;
+    border: 1px solid #ff7e00;
+    box-shadow: 2px 2px 2px #3f3f3f;
+  }
+
+  #button-save-edit {
+    position: inherit;
+    width: 80px;
+    padding: 5px;
+    margin: 5px 0px 40px;
+    background-color: #22cb0f;
+    outline: none;
+    border: 1px solid #22cb0f;
+    box-shadow: 2px 2px 2px #3f3f3f;
+    
+    display:none;
+    margin-left: 10px;
+  }
+
+
+  #category-on-box {
+    position: absolute;
+    left: 66%;
+    bottom: 30%;
+    width: 150px;
+    display: none;
+}
+
+#delete-note {
+    position: inherit;
+    width: 83px;
+    padding: 5px;
+    margin: 5px 10px 0px;
+    background-color: #ec5151;
+    outline: none;
+    border: 1px solid #ff7e00;
+    box-shadow: 2px 2px 2px #3f3f3f;
 }
