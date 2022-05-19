@@ -1,7 +1,7 @@
 import { Given , And , Then , When} from "cypress-cucumber-preprocessor/steps";
 
 Given(/^the user is on the web aplication to add a new category$/, () => {
-  cy.visit('http://localhost:8080')
+  cy.visit('http://34.140.43.143')
 
   cy.get('h1').contains("Notes App")
 });

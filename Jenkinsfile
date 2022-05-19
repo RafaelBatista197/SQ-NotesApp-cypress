@@ -4,7 +4,7 @@ pipeline{
    tools {nodejs "cypress"}
 
    parameters{
-        string(name: 'SPEC', defaultValue:"cypress/integration/3-notes-app-tests/**", description: "Enter the cypress script path that you want to execute")
+        string(name: 'SPEC', defaultValue:"cypress/integration/AddCategory/**", description: "Enter the cypress script path that you want to execute")
         choice(name: 'BROWSER', choices:['electron'], description: "Select the browser to be used in your cypress tests")
     }
 
