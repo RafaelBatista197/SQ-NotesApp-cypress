@@ -33,23 +33,23 @@ describe('Remove note tests', () => {
         cy.get('textarea')
             .type('Buy tomatos{enter}')
 
-        cy.get('#add').click()
+        cy.get('#add').click({multiple:true})
 
         cy.get('textarea')
             .type('Buy oranges{enter}')
 
-        cy.get('#add').click()
+        cy.get('#add').click({multiple:true})
 
         cy.get('textarea')
             .type('Buy pickles{enter}')
 
-        cy.get('#add').click()
+        cy.get('#add').click({multiple:true})
 
         //check it has 3 items
         cy.get('.notes').get('.box').should('have.length', 3)
 
         //remove the last item and check if it was removed
-        cy.get(':nth-child(3) > button').click()
+        cy.get(':nth-child(3) > button').click({multiple:true})
         cy.get('.notes').get('.box').should('have.length', 2)
         cy.get('.box').not('.contains', "Buy pickles")
     })
