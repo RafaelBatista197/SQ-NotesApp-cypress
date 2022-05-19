@@ -33,7 +33,7 @@ describe('Remove note tests', () => {
         cy.get('textarea')
             .type('Buy tomatos{enter}')
 
-        cy.get('#add').click({multiple:true})
+        cy.get('#add').click()
 
         cy.get('textarea')
             .type('Buy oranges{enter}')
