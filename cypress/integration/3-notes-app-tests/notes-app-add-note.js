@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-describe('Tests to be done on "Notes App', () => {
+describe('Add note tests', () => {
     beforeEach(() => {
         cy.visit('http://localhost:8080')
 

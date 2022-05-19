@@ -31,17 +31,13 @@ pipeline{
             }
         }
         stage('Run automated tests') {
-            /*steps {
-                echo 'Running automated tests' 
-            }*/
-            
-            
             steps {
                 sh 'npm prune'
                 sh 'npm cache clean --force'
                 sh 'npm i'
                 sh 'npm install --save-dev mochawesome mochawesome-merge mochawesome-report-generator'
                 sh 'rm -f mochawesome.json'
+                sh 'rm cypress/results/* || true'
                 sh 'npx cypress run --headless --config baseUrl="http://34.140.43.143" --browser electron --spec ${SPEC} --reporter mochawesome'
                 sh 'npx mochawesome-merge cypress/results/*.json -o mochawesome-report/mochawesome.json'
                 sh 'npx marge mochawesome-report/mochawesome.json' 
