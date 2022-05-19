@@ -26,5 +26,5 @@ When(/^clicks on the confirm button$/, () => {
 });
  
 Then(/^the new category is added to the list of categories$/, () => {
-  cy.get('#category').should('have.value', 'Car')
+  cy.get('#category').contains('Car')
 });
