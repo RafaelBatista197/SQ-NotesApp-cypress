@@ -7,11 +7,14 @@ Feature: Add a category
     The category will be visible in the list of items (notes).
 
 
+    Background: User is on the web application
+        Given the user goes to the web application
+        When he checks the title of the application
+        Then he can see he is on the Notes App
 # #-----------------------------------------------------------------------
    
     Scenario: Add a new category that doesn't exist yet
-        Given the user is on the web aplication to add a new category
-        And that category is not on the list of categories
+        Given that category is not on the list of categories
         When the user goes to add a new category
         And types the new category
         And clicks on the confirm button
@@ -62,14 +65,12 @@ Feature: Add a category
 
 # #-----------------------------------------------------------------------
 
-#     Scenario: Create a note and assign an existing category
-#         Given the user is on the web application to write a new note
-#         And he wants to assign a category to that note
-#         When the user writes text in the note
-#         And chooses a category from the list of categories
-#         And clicks the button to save the new note
-#         Then the note is be added to the list of notes
-#         And the category is visible
+    Scenario: Create a note and assign an existing category
+        Given the user writes text in the note
+        When chooses a category from the list of categories
+        And clicks the button to add the new note
+        Then the note is be added to the list of notes
+        And the category is visible
 
 # #-----------------------------------------------------------------------
 # #Backtrack
