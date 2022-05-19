@@ -5,14 +5,14 @@ Given(/^the user is on the web aplication to add a new category$/, () => {
 
   cy.get('h1').contains("Notes App")
 });
- 
+ /*
 Given(/^that category is not on the list of categories$/, () => {
   cy.on('uncaught:exception', (err, runnable) => {
     cy.get('#category').select('Car').should('not.exist')
     return false
   })
 });
-
+*/
 When(/^the user goes to add a new category$/, () => {
   cy.get('#categoryText')
 });
