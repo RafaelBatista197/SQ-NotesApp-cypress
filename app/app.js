@@ -15,6 +15,10 @@ addBtn.addEventListener('click',(e)=>{
         box.remove();
     }
 
+    //button edit
+    const buttonEditNote = document.createElement('button');
+    buttonEditNote.id = "button-edit";
+    buttonEditNote.innerHTML = 'Edit';
    
 
 
@@ -63,7 +67,9 @@ addBtn.addEventListener('click',(e)=>{
     noteWithCatAndText.appendChild(grid);
     grid.appendChild(cat);
     grid.appendChild(noteText);
+    noteWithCatAndText.appendChild(buttonEditNote);
     noteWithCatAndText.appendChild(buttonDeleteNote);
+    
 
 
     
@@ -109,6 +115,25 @@ addBtn.addEventListener('click',(e)=>{
         textArea.value = '';
     }
 
+    //Edit button action
+    buttonEditNote.addEventListener("click", function() {
+        text.contentEditable = true;
+        text1.contentEditable = true;
+        //buttonSaveEditNote.style.display="initial";
+        //clone.style.display="initial";
+        
+        /*
+        var textToFind = text.innerHTML;
+
+        for (var i = 0; i < clone.options.length; i++) {
+            if (clone.options[i].text === textToFind) {
+                clone.selectedIndex = i;
+                break;
+            }
+        }   
+        test = text.innerHTML;*/
+       
+    });
     
 
     buttonDeleteNote.addEventListener('click',()=>{

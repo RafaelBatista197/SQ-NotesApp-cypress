@@ -17,11 +17,24 @@ Feature: Edit an item of the list of notes
     # #-------- porque assim se funciona duma maneira para os 2, então não é preciso tar a fazer mais cenários, para quando só se edita a categoria e dá (save e cancel)
     # #--------, o mesmo para o texto
 
+     Background: User is on the web application
+        Given the user is on the web application to edit a existing note
+        When he checks the title of the application
+        Then he can see he is on the Notes App
+
+    Scenario: Check that the note is editable when user clicks to edit note
+        Given the user has created a note with text and category
+        And that note already has text
+        And that note already has category
+        When the user clicks on the edit button
+        Then the note text becomes editable 
+        And the note category becomes editable 
+
+
     # Scenario: Edit the text and category of the note
+    #     Given the user has created a note with text and category
     #     And that note already has text
     #     And that note already has category
-    #     And the user wants to edit the text
-    #     And edit the category to one that already exists
     #     When the user clicks on the edit button
     #     And selects a new category from the list of categories
     #     And edits the text of the note
