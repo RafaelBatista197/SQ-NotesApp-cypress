@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/RafaelBatista197/SQ-NotesApp-cypress#readme",
   "devDependencies": {
-    "cypress": "^9.6.0",
+    "cypress": "^9.6.1",
     "cypress-cucumber-preprocessor": "^4.3.1"
   },
   "cypress-cucumber-preprocessor": {
