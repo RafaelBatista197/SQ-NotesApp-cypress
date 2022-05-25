@@ -7,16 +7,18 @@ Feature: Add a category
     The category will be visible in the list of items (notes).
 
 
+    Background: User is on the web application
+        Given the user goes to the web application
+        When he checks the title of the application
+        Then he can see he is on the Notes App
 # #-----------------------------------------------------------------------
    
-#     Scenario: Add a new category that doesn't exist yet
-#         Given the user is on the web aplication to add a new category
-#         And that category is not on the list of categories
-#         When the user clicks on the add category button
-#         And an editable area appears to write the category
-#         And types the category
-#         And clicks on the confirm button
-#         Then the new category is added to the list of categories
+    Scenario: Add a new category that doesn't exist yet
+        Given that category is not on the list of categories
+        When the user goes to add a new category
+        And types the new category
+        And clicks on the confirm button
+        Then the new category is added to the list of categories
 
 # #-----------------------------------------------------------------------
 # #get warning
@@ -60,27 +62,15 @@ Feature: Add a category
 #         |  numbers  |   59213   |
 #         |  symbols  |   !#%&/   |
 
-# #-----------------------------------------------------------------------
-
-#     Scenario: Add a new category and cancel that action
-#         Given the user is on the web aplication to add a new category 
-#         When the user clicks on the add category button
-#         And an editable area appears to write the category
-#         And types the name of the category
-#         And clicks on the cancel button
-#         Then the new category is not be added to the list of categories
-#         And the text written on the textarea for the new category is cleaned
 
 # #-----------------------------------------------------------------------
 
-#     Scenario: Create a note and assign an existing category
-#         Given the user is on the web application to write a new note
-#         And he wants to assign a category to that note
-#         When the user writes text in the note
-#         And chooses a category from the list of categories
-#         And clicks the button to save the new note
-#         Then the note is be added to the list of notes
-#         And the category is visible
+    Scenario: Create a note and assign an existing category
+        Given the user writes text in the note
+        When chooses a category from the list of categories
+        And clicks the button to add the new note
+        Then the note is be added to the list of notes
+        And the category is visible
 
 # #-----------------------------------------------------------------------
 # #Backtrack

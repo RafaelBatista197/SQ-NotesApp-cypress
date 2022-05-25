@@ -1,6 +1,7 @@
 /// <reference types="cypress" />
 describe('Add note tests', () => {
     beforeEach(() => {
+        //cy.visit('http://localhost:8080')
         cy.visit('http://34.140.43.143')
 
         cy.get('h1').contains("Notes App")
@@ -13,8 +14,8 @@ describe('Add note tests', () => {
         cy.get('#add').click()
 
         //confirm item was added with the correct text
-        cy.get('.notes').get('.box').should('have.length', 1)
-        cy.get('.box').contains("Buy tomatos")
+        cy.get('#note').should('have.length', 1)
+        cy.get('#note').get('#s4 > .box').contains("Buy tomatos")
     })
 
     it('Add 1 new note item to list of notes with 150 characters', () => {
@@ -24,8 +25,8 @@ describe('Add note tests', () => {
         cy.get('#add').click()
 
         //confirm item was added with the correct text
-        cy.get('.notes').get('.box').should('have.length', 1)
-        cy.get('.box').contains("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        cy.get('#note').should('have.length', 1)
+        cy.get('#note').get('#s4 > .box').contains("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
 
         /*
             Visualmente a textbox não está correta, era necessário usar Visual Testing
@@ -42,7 +43,7 @@ describe('Add note tests', () => {
         })
 
         //should not create a new item
-        cy.get('.notes').get('.box').should('have.length', 0)
+        cy.get('#note').should('have.length', 0)
     })
 
     it('Add 1 new item with a changed color to green', () => {
@@ -57,8 +58,8 @@ describe('Add note tests', () => {
         cy.get('#add').click()
         
         //confirm item was added with the correct text
-        cy.get('.notes').get('.box').should('have.length', 1)
-        cy.get('.box').contains("New green item")
+        cy.get('#note').should('have.length', 1)
+        cy.get('#note').get('#s4 > .box').contains("New green item")
 
         //confirm the color is the same the user choose
         cy.get('p').should('have.css', 'color', 'rgb(0, 128, 0)')
@@ -72,11 +73,11 @@ describe('Add note tests', () => {
         cy.get('#size').type('30');
         cy.get('#add').click();
 
-        cy.get('.notes').get('.box').should('have.length', 1)
+        cy.get('#note').should('have.length', 1)
 
         //confirm item was added with the correct text and size
-        cy.get('.notes').get('.box').should('have.length', 1)
-        cy.get('.box').contains("Big text example")
+        cy.get('#note').should('have.length', 1)
+        cy.get('#note').get('#s4 > .box').contains("Big text example")
         cy.get('p').should('have.css', 'font-size', '30px')
     })
 
@@ -89,8 +90,8 @@ describe('Add note tests', () => {
         cy.get('#add').click();
 
         //confirm item was added with the correct text and size
-        cy.get('.notes').get('.box').should('have.length', 1)
-        cy.get('.box').contains("Small text example")
+        cy.get('#note').should('have.length', 1)
+        cy.get('#note').get('#s4 > .box').contains("Small text example")
         cy.get('p').should('have.css', 'font-size', '8px')
     })
 })

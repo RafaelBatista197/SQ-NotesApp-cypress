@@ -9,7 +9,13 @@
 </head>
 <body>
     <div class="container">
-        <h1>Notes Appppppaassssdfsddddaasdfsdfdsfasdjkdcvdvsvdfsvbkjdsfdssdsa23hjjhjbDVDSNVNDFVNbhbr2reeee3344</h1>
+        <h1>Notes App</h1>
+
+        <div class="addCategory">
+            <h3>New Category</h3>
+            <input type="categoryText" id="categoryText" name="categoryText" size="40"><br>
+            <button id="buttonAddCategory" type="buttonAddCategory">Confirm</button>
+        </div>
 
         <div class="text-area">
         <textarea placeholder="Enter your note here..."></textarea>
@@ -20,6 +26,17 @@
           <label id="sizelabel" for="size">Size : </label>
           <input type="number" value="17" id="size">
         
+        </div>
+
+        <div class="categories">
+            <label for="categories" id="categorylabel">Category:</label>
+              <select name="category" id="category">
+                <option value="none" selected disabled hidden>Select a Category</option>
+                <option value="empty"></option>
+                <option value="task">Task</option>
+                <option value="reminder">Reminder</option>
+                <option value="food">Food</option>
+              </select>
         </div>
 
         <button id="add">Add</button>
