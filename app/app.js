@@ -21,11 +21,15 @@ addBtn.addEventListener('click',(e)=>{
     buttonEditNote.innerHTML = 'Edit';
    
 
-
     //button delete note
     const buttonDeleteNote = document.createElement('button');
     buttonDeleteNote.id = "delete-note";
     buttonDeleteNote.innerHTML = 'Delete note';
+
+    //button cancel edit note
+    const buttonCancelEditNote = document.createElement('button');
+    buttonCancelEditNote.id = "cancel-edit-note";
+    buttonCancelEditNote.innerHTML = 'Cancel';
 
     //box divs
     const box = document.createElement('div');
@@ -68,6 +72,7 @@ addBtn.addEventListener('click',(e)=>{
     grid.appendChild(cat);
     grid.appendChild(noteText);
     noteWithCatAndText.appendChild(buttonEditNote);
+    noteWithCatAndText.appendChild(buttonCancelEditNote);
     noteWithCatAndText.appendChild(buttonDeleteNote);
     
 
@@ -119,7 +124,29 @@ addBtn.addEventListener('click',(e)=>{
     buttonEditNote.addEventListener("click", function() {
         text.contentEditable = true;
         text1.contentEditable = true;
+        buttonCancelEditNote.style.display="initial";
         //buttonSaveEditNote.style.display="initial";
+        //clone.style.display="initial";
+        
+        /*
+        var textToFind = text.innerHTML;
+
+        for (var i = 0; i < clone.options.length; i++) {
+            if (clone.options[i].text === textToFind) {
+                clone.selectedIndex = i;
+                break;
+            }
+        }   
+        test = text.innerHTML;*/
+       
+    });
+
+    //Cancel button action
+    buttonCancelEditNote.addEventListener("click", function() {
+        text.contentEditable = false;
+        text1.contentEditable = false;
+        //buttonSaveEditNote.style.display="none";
+        buttonCancelEditNote.style.display="none";
         //clone.style.display="initial";
         
         /*

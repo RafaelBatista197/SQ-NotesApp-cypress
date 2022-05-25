@@ -264,3 +264,17 @@ label{
     border: 1px solid #ff7e00;
     box-shadow: 2px 2px 2px #3f3f3f;
 }
+
+#cancel-edit-note {
+    position: inherit;
+    width: 80px;
+    padding: 5px;
+    margin: 5px 0px 40px;
+    background-color: #073ae2;
+    outline: none;
+    border: 1px solid #3d7ce3;
+    box-shadow: 2px 2px 2px #3f3f3f;
+    
+    display:none;
+    margin-left: 10px;
+}

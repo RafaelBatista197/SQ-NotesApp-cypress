@@ -30,6 +30,18 @@ Feature: Edit an item of the list of notes
         Then the note text becomes editable 
         And the note category becomes editable 
 
+    Scenario: Check that the note is not editable when user clicks on cancel
+        Given the user has created a note with text and category
+        And that note already has text
+        And that note already has category
+        And the user clicks on the edit button
+        And the note text becomes editable 
+        And the note category becomes editable 
+        When the user clicks on the cancel button
+        Then the note text is no longer editable 
+        And the note category is no longer editable 
+
+
 
     # Scenario: Edit the text and category of the note
     #     Given the user has created a note with text and category
