@@ -252,7 +252,7 @@ addCategoryBtn.addEventListener('click',(e)=>{
     var flag = false;
     if(newCategoryText.value === ''){
         alert('The category must have some text!');
-        box.remove();
+        //box.remove();
     }else{
         var length=document.getElementById('category').options.length;
         for ( var i=0; i <= length - 1; i++ ) {

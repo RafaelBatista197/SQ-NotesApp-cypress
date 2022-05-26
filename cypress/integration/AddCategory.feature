@@ -33,15 +33,11 @@ Feature: Add a category
 # #-----------------------------------------------------------------------
 # #get warning
 
-#     Scenario: Add a new empty category
-#         Given the user is on the web aplication to add a new category
-#         And that category has no text 
-#         When the user clicks on the add category button
-#         And an editable area appears to write the category
-#         And does not type anything 
-#         And clicks on the confirm button
-#         Then the user gets a warning saying "The category must have some text!"
-#         And the new category is not be added to the list of categories  
+    Scenario: Add a new empty category
+        Given the user writes a category that has no text 
+        When he clicks on the confirm button
+        Then the user gets a warning saying "The category must have some text!"
+        And the new empty category is not be added to the list of categories  
 
 # #-----------------------------------------------------------------------
 

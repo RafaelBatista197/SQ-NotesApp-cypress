@@ -61,14 +61,39 @@ When(/^clicks on the confirm button$/, () => {
 });
  
 Then(/^the user gets a warning saying "([^"]*)"$/, (arg0,) => {
-  cy.on('uncaught:exception', (err, runnable) => {
-    console.log("err :" + err)
-    console.log("runnable :" + runnable)
-    return false
-  })
+  cy.on('window:alert', (text) => {
+    expect(text).to.equal('Category already exists, please enter a different category!')
+  });
 });
 
 Then(/^the new category is not be added to the list of categories$/, () => {
+  cy.get('.categories')
+    .find('#category')
+    .then(category => {
+      //by default there are 5 elements in the select, because the disabled element counts as well
+    expect(category.children()).to.have.length(5);
+    });
+});
+
+// 3RD SCENARIO
+ 
+Given(/^the user writes a category that has no text$/, () => {
+  //NOTE
+  //cypress doesn't accept an empty string, so I'm just validating the element here for the sake of the step....
+  cy.get('#categoryText')
+});
+
+When(/^he clicks on the confirm button$/, () => {
+  cy.get('#buttonAddCategory').click()
+});
+ 
+Then(/^the user gets a warning saying "([^"]*)"$/, (arg0,) => {
+  cy.on('window:alert', (text) => {
+    expect(text).to.equal('The category must have some text!')
+  });
+});
+
+Then(/^the new empty category is not be added to the list of categories$/, () => {
   cy.get('.categories')
     .find('#category')
     .then(category => {
