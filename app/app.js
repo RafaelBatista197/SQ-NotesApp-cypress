@@ -249,13 +249,24 @@ sizeInput.addEventListener('change',()=>{
 
 //Add a new category to the spinner of categories
 addCategoryBtn.addEventListener('click',(e)=>{
+    var flag = false;
     if(newCategoryText.value === ''){
         alert('The category must have some text!');
         box.remove();
     }else{
-        var opt = document.createElement('option');
-        opt.value = newCategoryText.value;
-        opt.innerHTML = newCategoryText.value;
-        noteCategory.appendChild(opt);
+        var length=document.getElementById('category').options.length;
+        for ( var i=0; i <= length - 1; i++ ) {
+            if (document.getElementById('category').options[i].text.toUpperCase() == newCategoryText.value.toUpperCase())  {
+                alert('Category already exists, please enter a different category!');
+                flag = true;
+            }  
+        }
+        //if category is not repeated, we can add it
+        if(!flag){
+            var opt = document.createElement('option');
+            opt.value = newCategoryText.value;
+            opt.innerHTML = newCategoryText.value;
+            noteCategory.appendChild(opt);
+        }
     }
 });

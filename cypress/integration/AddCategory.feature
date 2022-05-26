@@ -21,17 +21,14 @@ Feature: Add a category
         Then the new category is added to the list of categories
 
 # #-----------------------------------------------------------------------
-# #get warning
+#get warning
 
-#     Scenario: Add a new category that already exists
-#         Given the user is on the web aplication to add a new category
-#         And that category already exists 
-#         When the user clicks on the add category button 
-#         And an editable area appears to write the category
-#         And types a category that already exists
-#         And clicks on the confirm button
-#         Then the user gets a warning saying "That category already exists!"
-#         And the new category is not be added to the list of categories 
+    Scenario: Add a new category that already exists
+        Given the category the user will write already exists 
+        When the user types a category that already exists
+        And clicks on the confirm button
+        Then the user gets a warning saying "Category already exists, please enter a different category!"
+        And the new category is not be added to the list of categories 
         
 # #-----------------------------------------------------------------------
 # #get warning
