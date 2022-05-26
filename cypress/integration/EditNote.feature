@@ -41,6 +41,39 @@ Feature: Edit an item of the list of notes
         Then the note text is no longer editable 
         And the note category is no longer editable 
 
+    Scenario: Edit note that has category and text where category is removed first and then the note
+        Given the user has created a note with text and category
+        And that note already has text
+        And that note already has category
+        When the user clicks on the edit button
+        And removes the category first  
+        And clicks on the delete button to remove the note 
+        Then note will be removed from the list of notes
+
+    # Scenario: Edit note that has category and text and both texts are deleted
+    #     Given the user has created a note with text and category
+    #     And that note already has text
+    #     And that note already has category
+    #     When the user clicks on the edit button
+    #     And deletes the category text
+    #     And deletes the note text
+    #     And clicks the save button
+    #     Then the system shows a warning message
+    #     And that note is not updated on the list
+
+
+    # Scenario: Edit note that has no category and the text is deleted
+    #     Given the user has created a note with text and no category
+    #     And that note already has text
+    #     And that note already has no category
+    #     And the user wants to delete the text of the note
+    #     When the user clicks on the edit button
+    #     And deletes the text of the note
+    #     And clicks the save button
+    #     Then the system shows a warning message
+    #     And that note is not updated on the list
+
+
 
 
     # Scenario: Edit the text and category of the note
@@ -207,32 +240,11 @@ Feature: Edit an item of the list of notes
 
 
 
-    # #-------- Caminho onde é um item que tem só (texto),
-    # #-------- e vai ser apagado o texto da nota, ou seja,
-    # #-------- vai dar warning porque não pode ficar nota sem nada
-    # Scenario: Edit note that has no category and the text is deleted
-    #     And that note already has text
-    #     And that note already has no category
-    #     And the user wants to delete the text of the note
-    #     When the user clicks on the edit button
-    #     And deletes the text of the note
-    #     And clicks the save button
-    #     Then the system shows a warning message
-    #     And that note is not updated on the list
+   
 
 
 
-    # #------- Caminho onde uma nota (categoria e texto) é gurdade sem texto e categoria
-    # Scenario: Edit note that has category and text and both are deleted
-    #     And that note already has text
-    #     And that note already has category
-    #     And the user wants to delete both
-    #     When the user clicks on the edit button
-    #     And deletes the text note
-    #     And deletes the category text
-    #     And clicks the save button
-    #     Then the system shows a warning message
-    #     And that note is not updated on the list
+    
 
 
 

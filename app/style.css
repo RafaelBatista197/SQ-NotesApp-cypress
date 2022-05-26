@@ -278,3 +278,15 @@ label{
     display:none;
     margin-left: 10px;
 }
+
+
+#delete_category_button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    outline: none;
+    display: none;
+}

@@ -85,6 +85,86 @@ Then(/^the note category is no longer editable$/, () => {
     cy.get('#s3 > .box > p').should('have.attr', 'contenteditable').and('equal', 'false')
 });
 
+
+// 3RD SCENARIO
+
+Given(/^the user has created a note with text and category$/, () => {
+    cy.get('textarea').type('Party this weekend{enter}')
+    cy.get('#category').select('Reminder')
+    cy.get('#add').click()
+});
+ 
+Given(/^that note already has text$/, () => {
+    cy.get('#s4 > .box > p').contains("Party this weekend")
+});
+ 
+Given(/^that note already has category$/, () => {
+    cy.get('#s3 > .box > p').contains("Reminder")
+});
+ 
+When(/^the user clicks on the edit button$/, () => {
+    cy.get('#button-edit').click()
+});
+ 
+When(/^removes the category first$/, () => {
+    cy.get('#delete_category_button').click()
+});
+ 
+When(/^clicks on the delete button to remove the note$/, () => {
+    cy.get('#delete-note').click()
+});
+ 
+Then(/^note will be removed from the list of notes$/, () => {
+    cy.get('#note').should('have.length', 0)
+});
+ 
+// 4TH SCENARIO
+/*
+Given(/^the user has created a note with text and category$/, () => {
+    cy.get('textarea').type('Party this weekend{enter}')
+    cy.get('#category').select('Reminder')
+    cy.get('#add').click()
+});
+ 
+Given(/^that note already has text$/, () => {
+    cy.get('#s4 > .box > p').contains("Party this weekend")
+});
+ 
+Given(/^that note already has category$/, () => {
+    cy.get('#s3 > .box > p').contains("Reminder")
+});
+ 
+When(/^the user clicks on the edit button$/, () => {
+    cy.get('#button-edit').click()
+});
+ 
+When(/^deletes the category text$/, () => {
+    cy.get('#s3 > .box > p').clear()
+});
+ 
+When(/^deletes the note text$/, () => {
+    cy.get('#s4 > .box > p').clear()
+});
+ 
+When(/^clicks the save button$/, () => {
+    cy.get('#button-save-edit').click()
+});
+ 
+Then(/^the system shows a warning message$/, () => {
+    cy.on('uncaught:exception', (err, runnable) => {
+        console.log("err :" + err)
+        console.log("runnable :" + runnable)
+        return false
+    })
+});
+ 
+Then(/^that note is not updated on the list$/, () => {
+    cy.get('#s4 > .box > p').contains("Party this weekend")
+    cy.get('#s3 > .box > p').contains("Reminder")
+    cy.get('.notes').should('have.length', 1)
+});*/
+
+
 /*
 Given(/^the user has created a note with text and category$/, () => {
     cy.get('textarea').type('Party this weekend{enter}')

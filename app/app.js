@@ -7,6 +7,9 @@ const addCategoryBtn = document.querySelector('#buttonAddCategory');
 const newCategoryText = document.querySelector('#categoryText')
 const noteCategory = document.querySelector('#category');
 
+var test = "";
+var text_note = "";
+
 // Adding Notes by clocking the Add button.
 //TEST COMMENT JENKINS2
 addBtn.addEventListener('click',(e)=>{
@@ -31,6 +34,11 @@ addBtn.addEventListener('click',(e)=>{
     buttonCancelEditNote.id = "cancel-edit-note";
     buttonCancelEditNote.innerHTML = 'Cancel';
 
+     //button save
+     const buttonSaveEditNote = document.createElement('button');
+     buttonSaveEditNote.id = "button-save-edit";
+     buttonSaveEditNote.innerHTML = 'Save';
+
     //box divs
     const box = document.createElement('div');
     box.className ='box';
@@ -42,6 +50,9 @@ addBtn.addEventListener('click',(e)=>{
     const text1 = document.createElement('p');
     
     const closeBtn = document.createElement('button');
+    closeBtn.id = "delete_category_button";
+    closeBtn.innerHTML = "X";
+
     const closeBtnCategory = document.createElement('button');
 
     // Create a copy of it
@@ -74,6 +85,7 @@ addBtn.addEventListener('click',(e)=>{
     noteWithCatAndText.appendChild(buttonEditNote);
     noteWithCatAndText.appendChild(buttonCancelEditNote);
     noteWithCatAndText.appendChild(buttonDeleteNote);
+    noteWithCatAndText.appendChild(buttonSaveEditNote);
     
 
 
@@ -82,20 +94,13 @@ addBtn.addEventListener('click',(e)=>{
     //Putting the category and the description on the 2 boxes
     box1.style.padding= "15px 10px 15px 35px"
     box1.appendChild(text1);
-    box1.appendChild(closeBtnCategory);
-    closeBtnCategory.innerHTML = 'X';
-    closeBtnCategory.addEventListener('click',()=>{
-        box1.remove();
-    })
+   
 
     text.style.fontWeight = "900";
     box.style.backgroundColor = '#d5d5e7';
     box.appendChild(text);
-    box.appendChild(closeBtn);
-    closeBtn.innerHTML = 'X';
-    closeBtn.addEventListener('click',()=>{
-        box.remove();
-    })
+    
+    
 
     //Adding category spinner to category box
     box.appendChild(clone);
@@ -114,6 +119,8 @@ addBtn.addEventListener('click',(e)=>{
     //get the text, into the note
     text1.innerHTML = textArea.value;
 
+    text_note = textArea.value;
+
     text.style.color = colorInput.value;
     text.style.fontSize = sizeInput.value + 'px';
     if(textArea.value === text.innerHTML){
@@ -125,7 +132,8 @@ addBtn.addEventListener('click',(e)=>{
         text.contentEditable = true;
         text1.contentEditable = true;
         buttonCancelEditNote.style.display="initial";
-        //buttonSaveEditNote.style.display="initial";
+        buttonSaveEditNote.style.display="initial";
+        closeBtn.style.display="initial"
         //clone.style.display="initial";
         
         /*
@@ -137,7 +145,12 @@ addBtn.addEventListener('click',(e)=>{
                 break;
             }
         }   
-        test = text.innerHTML;*/
+        */
+        test = text.innerHTML;
+        box.appendChild(closeBtn);
+        closeBtn.addEventListener('click',()=>{
+            box.remove();
+        })
        
     });
 
@@ -145,8 +158,9 @@ addBtn.addEventListener('click',(e)=>{
     buttonCancelEditNote.addEventListener("click", function() {
         text.contentEditable = false;
         text1.contentEditable = false;
-        //buttonSaveEditNote.style.display="none";
+        buttonSaveEditNote.style.display="none";
         buttonCancelEditNote.style.display="none";
+        closeBtn.style.display="none";
         //clone.style.display="initial";
         
         /*
@@ -159,7 +173,61 @@ addBtn.addEventListener('click',(e)=>{
             }
         }   
         test = text.innerHTML;*/
+        
        
+    });
+
+    //Save button action
+    buttonSaveEditNote.addEventListener("click", function() {
+        /*
+        var textCat = text.innerHTML;
+        var flag = false;
+        var selectedTextFromCategoryWhenEditingCategory = clone.options[clone.selectedIndex].text;
+
+        //When user only change text
+        if(textCat  == selectedTextFromCategoryWhenEditingCategory){
+            text.innerHTML = selectedTextFromCategoryWhenEditingCategory;
+        }
+        if ( textCat != test){
+            
+            var length=document.getElementById('category').options.length;
+            for ( var i=0; i <= length - 1; i++ ) {
+                if (document.getElementById('category').options[i].text == textCat)  {
+                    alert('Category already exists, please enter a different category.');
+                    flag = true;
+                } 
+                   
+            }
+            if (flag) {
+                return;
+            } else {
+                //Add category to list of category - if new
+                get_position('category', text.innerHTML);
+                get_position('category-on-box', text.innerHTML);
+                test = textCat;
+            }
+                  
+        } else {
+             text.innerHTML = selectedTextFromCategoryWhenEditingCategory;
+        }
+        */
+
+        if(text1.innerHTML === "" && text.innerHTML === "") {
+            alert('Cant leave note text empty.');
+            text1.innerHTML = text_note;
+            text.innerHTML = test;
+        } else if (text1.innerHTML === "") {
+            alert('Cant leave note text empty.');
+            text1.innerHTML = text_note;
+        } else {
+            text.contentEditable = false;
+            text1.contentEditable = false;
+            buttonSaveEditNote.style.display="none";
+            buttonCancelEditNote.style.display="none";
+            closeBtn.style.display="none"
+        }
+
+        //clone.style.display="none";
     });
     
 
