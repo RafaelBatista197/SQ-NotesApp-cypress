@@ -105,14 +105,11 @@ Feature: Add a category
 
 # #-----------------------------------------------------------------------
 
-#     Scenario: Only selecting a category when creating a new note
-#         Given the user is on the web application to write a new note
-#         And he only adds a category to that note
-#         When the user selects the category of the note
-#         And clicks on the button to add the new note 
-#         Then the note is added to the list of notes
-#         But only has category
-#         And the text of the note is empty
+    Scenario: Only selecting a category when creating a new note
+        Given the user only selects the category of the note
+        When he clicks on the button to add the new note 
+        Then the system should give a warning saying "Please Enter a note."
+        And the new note should not be created
 
  
 

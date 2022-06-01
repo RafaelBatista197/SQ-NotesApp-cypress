@@ -124,3 +124,27 @@ Then(/^the note is be added to the list of notes$/, () => {
 Then(/^the category is visible$/, () => {
   cy.get('#s3 > .box > p').contains("Reminder")
 });
+
+
+
+
+//LAST SCENARIO
+
+Given(/^the user only selects the category of the note$/, () => {
+  cy.get('#category').select('Food')
+});
+
+When(/^he clicks on the button to add the new note$/, () => {
+  cy.get('#add').click()
+});
+ 
+Then(/^the system should give a warning saying "([^"]*)"$/, (arg0,) => {
+  cy.on('window:alert', (text) => {
+    expect(text).to.equal('Please Enter a note.')
+  });
+});
+
+Then(/^the new note should not be created$/, () => {
+  //should not create a new item
+  cy.get('.notes').children().should('have.length', 0)
+});
