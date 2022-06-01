@@ -45,7 +45,7 @@ describe('Add note tests', () => {
         //should not create a new item
         cy.get('#note').should('have.length', 0)
     })
-
+/*
     it('Add 1 new item with a changed color to green', () => {
         cy.get('textarea')
             .type('New green item{enter}')
@@ -93,5 +93,5 @@ describe('Add note tests', () => {
         cy.get('#note').should('have.length', 1)
         cy.get('#note').get('#s4 > .box').contains("Small text example")
         cy.get('p').should('have.css', 'font-size', '8px')
-    })
+    })*/
 })
