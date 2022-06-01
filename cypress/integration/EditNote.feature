@@ -50,13 +50,27 @@ Feature: Edit an item of the list of notes
         And clicks on the delete button to remove the note 
         Then note will be removed from the list of notes
 
-    # Scenario: Edit note that has category and text and both texts are deleted
-    #     Given the user has created a note with text and category
+    Scenario: Edit note that has category and text and both texts are deleted
+        Given the user has created a note with text and category
+        And that note already has text
+        And that note already has category
+        When the user clicks on the edit button
+        And deletes the category text
+        And deletes the note text
+        And clicks the save button
+        Then the system shows a warning message
+        And that note is not updated on the list
+
+
+    # #-------- Caminho onde é um item que tem (categoria e nota),
+    # #-------- vai ser apagado o texto da nota, ou seja, só vai
+    # #-------- ficar com a categoria,
+    # Scenario: Edit note with category and text where the text is deleted
     #     And that note already has text
     #     And that note already has category
+    #     And the user wants to delete the text of the note
     #     When the user clicks on the edit button
-    #     And deletes the category text
-    #     And deletes the note text
+    #     And deletes the text of the note
     #     And clicks the save button
     #     Then the system shows a warning message
     #     And that note is not updated on the list
@@ -72,8 +86,6 @@ Feature: Edit an item of the list of notes
     #     And clicks the save button
     #     Then the system shows a warning message
     #     And that note is not updated on the list
-
-
 
 
     # Scenario: Edit the text and category of the note
@@ -226,17 +238,6 @@ Feature: Edit an item of the list of notes
 
 
 
-    # #-------- Caminho onde é um item que tem (categoria e nota),
-    # #-------- vai ser apagado o texto da nota, ou seja, só vai
-    # #-------- ficar com a categoria,
-    # Scenario: Edit note with category and text where the text is deleted
-    #     And that note already has text
-    #     And that note already has category
-    #     And the user wants to delete the text of the note
-    #     When the user clicks on the edit button
-    #     And deletes the text of the note
-    #     And clicks the save button
-    #     Then that note is updated
 
 
 
