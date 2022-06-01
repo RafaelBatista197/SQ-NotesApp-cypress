@@ -21,30 +21,23 @@ Feature: Add a category
         Then the new category is added to the list of categories
 
 # #-----------------------------------------------------------------------
-# #get warning
+#get warning
 
-#     Scenario: Add a new category that already exists
-#         Given the user is on the web aplication to add a new category
-#         And that category already exists 
-#         When the user clicks on the add category button 
-#         And an editable area appears to write the category
-#         And types a category that already exists
-#         And clicks on the confirm button
-#         Then the user gets a warning saying "That category already exists!"
-#         And the new category is not be added to the list of categories 
+    Scenario: Add a new category that already exists
+        Given the category the user will write already exists 
+        When the user types a category that already exists
+        And clicks on the confirm button
+        Then the user gets a warning saying "Category already exists, please enter a different category!"
+        And the new category is not be added to the list of categories 
         
 # #-----------------------------------------------------------------------
 # #get warning
 
-#     Scenario: Add a new empty category
-#         Given the user is on the web aplication to add a new category
-#         And that category has no text 
-#         When the user clicks on the add category button
-#         And an editable area appears to write the category
-#         And does not type anything 
-#         And clicks on the confirm button
-#         Then the user gets a warning saying "The category must have some text!"
-#         And the new category is not be added to the list of categories  
+    Scenario: Add a new empty category
+        Given the user writes a category that has no text 
+        When he clicks on the confirm button
+        Then the user gets a warning saying "The category must have some text!"
+        And the new empty category is not be added to the list of categories  
 
 # #-----------------------------------------------------------------------
 
@@ -112,14 +105,11 @@ Feature: Add a category
 
 # #-----------------------------------------------------------------------
 
-#     Scenario: Only selecting a category when creating a new note
-#         Given the user is on the web application to write a new note
-#         And he only adds a category to that note
-#         When the user selects the category of the note
-#         And clicks on the button to add the new note 
-#         Then the note is added to the list of notes
-#         But only has category
-#         And the text of the note is empty
+    Scenario: Only selecting a category when creating a new note
+        Given the user only selects the category of the note
+        When he clicks on the button to add the new note 
+        Then the system should give a warning saying "Please Enter a note."
+        And the new note should not be created
 
  
 

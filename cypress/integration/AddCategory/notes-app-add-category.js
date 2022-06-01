@@ -46,6 +46,62 @@ Then(/^the new category is added to the list of categories$/, () => {
     });
 });
 
+// 2ND SCENARIO
+ 
+Given(/^the category the user will write already exists$/, () => {
+  cy.get('#category').select('Food').should('exist')
+});
+
+When(/^the user types a category that already exists$/, () => {
+  cy.get('#categoryText').type('fOOd')
+});
+
+When(/^clicks on the confirm button$/, () => {
+  cy.get('#buttonAddCategory').click()
+});
+ 
+Then(/^the user gets a warning saying "([^"]*)"$/, (arg0,) => {
+  cy.on('window:alert', (text) => {
+    expect(text).to.equal('Category already exists, please enter a different category!')
+  });
+});
+
+Then(/^the new category is not be added to the list of categories$/, () => {
+  cy.get('.categories')
+    .find('#category')
+    .then(category => {
+      //by default there are 5 elements in the select, because the disabled element counts as well
+    expect(category.children()).to.have.length(5);
+    });
+});
+
+// 3RD SCENARIO
+ 
+Given(/^the user writes a category that has no text$/, () => {
+  //NOTE
+  //cypress doesn't accept an empty string, so I'm just validating the element here for the sake of the step....
+  cy.get('#categoryText')
+});
+
+When(/^he clicks on the confirm button$/, () => {
+  cy.get('#buttonAddCategory').click()
+});
+ 
+Then(/^the user gets a warning saying "([^"]*)"$/, (arg0,) => {
+  cy.on('window:alert', (text) => {
+    expect(text).to.equal('The category must have some text!')
+  });
+});
+
+Then(/^the new empty category is not be added to the list of categories$/, () => {
+  cy.get('.categories')
+    .find('#category')
+    .then(category => {
+      //by default there are 5 elements in the select, because the disabled element counts as well
+    expect(category.children()).to.have.length(5);
+    });
+});
+
 // 5th SCENARIO
 
 
@@ -67,4 +123,28 @@ Then(/^the note is be added to the list of notes$/, () => {
 
 Then(/^the category is visible$/, () => {
   cy.get('#s3 > .box > p').contains("Reminder")
+});
+
+
+
+
+//LAST SCENARIO
+
+Given(/^the user only selects the category of the note$/, () => {
+  cy.get('#category').select('Food')
+});
+
+When(/^he clicks on the button to add the new note$/, () => {
+  cy.get('#add').click()
+});
+ 
+Then(/^the system should give a warning saying "([^"]*)"$/, (arg0,) => {
+  cy.on('window:alert', (text) => {
+    expect(text).to.equal('Please Enter a note.')
+  });
+});
+
+Then(/^the new note should not be created$/, () => {
+  //should not create a new item
+  cy.get('.notes').children().should('have.length', 0)
 });

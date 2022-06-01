@@ -7,6 +7,7 @@ const addCategoryBtn = document.querySelector('#buttonAddCategory');
 const newCategoryText = document.querySelector('#categoryText')
 const noteCategory = document.querySelector('#category');
 
+
 var test = "";
 var text_note = "";
 
@@ -15,7 +16,7 @@ var text_note = "";
 addBtn.addEventListener('click',(e)=>{
     if(textArea.value === ''){
         alert('Please Enter a note.');
-        box.remove();
+        return;
     }
 
     //button edit
@@ -121,9 +122,9 @@ addBtn.addEventListener('click',(e)=>{
 
     text_note = textArea.value;
 
-    text.style.color = colorInput.value;
-    text.style.fontSize = sizeInput.value + 'px';
-    if(textArea.value === text.innerHTML){
+    text1.style.color = colorInput.value;
+    text1.style.fontSize = sizeInput.value + 'px';
+    if(textArea.value === text1.innerHTML){
         textArea.value = '';
     }
 
@@ -249,13 +250,23 @@ sizeInput.addEventListener('change',()=>{
 
 //Add a new category to the spinner of categories
 addCategoryBtn.addEventListener('click',(e)=>{
+    var flag = false;
     if(newCategoryText.value === ''){
         alert('The category must have some text!');
-        box.remove();
     }else{
-        var opt = document.createElement('option');
-        opt.value = newCategoryText.value;
-        opt.innerHTML = newCategoryText.value;
-        noteCategory.appendChild(opt);
+        var length=document.getElementById('category').options.length;
+        for ( var i=0; i <= length - 1; i++ ) {
+            if (document.getElementById('category').options[i].text.toUpperCase() == newCategoryText.value.toUpperCase())  {
+                alert('Category already exists, please enter a different category!');
+                flag = true;
+            }  
+        }
+        //if category is not repeated, we can add it
+        if(!flag){
+            var opt = document.createElement('option');
+            opt.value = newCategoryText.value;
+            opt.innerHTML = newCategoryText.value;
+            noteCategory.appendChild(opt);
+        }
     }
 });
