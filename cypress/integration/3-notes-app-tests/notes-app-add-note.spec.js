@@ -45,7 +45,7 @@ describe('Add note tests', () => {
         //should not create a new item
         cy.get('#note').should('have.length', 0)
     })
-/*
+
     it('Add 1 new item with a changed color to green', () => {
         cy.get('textarea')
             .type('New green item{enter}')
@@ -62,7 +62,7 @@ describe('Add note tests', () => {
         cy.get('#note').get('#s4 > .box').contains("New green item")
 
         //confirm the color is the same the user choose
-        cy.get('p').should('have.css', 'color', 'rgb(0, 128, 0)')
+        cy.get('#s4 > .box > p').should('have.css', 'color', 'rgb(0, 128, 0)')
     })
 
     it('Add 1 new item and increase the size of the letter to 30', () => {
@@ -78,7 +78,7 @@ describe('Add note tests', () => {
         //confirm item was added with the correct text and size
         cy.get('#note').should('have.length', 1)
         cy.get('#note').get('#s4 > .box').contains("Big text example")
-        cy.get('p').should('have.css', 'font-size', '30px')
+        cy.get('#s4 > .box > p').should('have.css', 'font-size', '30px')
     })
 
     it('Add 1 new item and decrease the size of the letter to 8', () => {
@@ -92,6 +92,6 @@ describe('Add note tests', () => {
         //confirm item was added with the correct text and size
         cy.get('#note').should('have.length', 1)
         cy.get('#note').get('#s4 > .box').contains("Small text example")
-        cy.get('p').should('have.css', 'font-size', '8px')
-    })*/
+        cy.get('#s4 > .box > p').should('have.css', 'font-size', '8px')
+    })
 })
