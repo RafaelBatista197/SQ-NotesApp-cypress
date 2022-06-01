@@ -119,7 +119,7 @@ Then(/^note will be removed from the list of notes$/, () => {
 });
  
 // 4TH SCENARIO
-/*
+
 Given(/^the user has created a note with text and category$/, () => {
     cy.get('textarea').type('Party this weekend{enter}')
     cy.get('#category').select('Reminder')
@@ -162,7 +162,7 @@ Then(/^that note is not updated on the list$/, () => {
     cy.get('#s4 > .box > p').contains("Party this weekend")
     cy.get('#s3 > .box > p').contains("Reminder")
     cy.get('.notes').should('have.length', 1)
-});*/
+});
 
 
 /*
