@@ -54,8 +54,6 @@ addBtn.addEventListener('click',(e)=>{
     closeBtn.id = "delete_category_button";
     closeBtn.innerHTML = "X";
 
-    const closeBtnCategory = document.createElement('button');
-
     // Create a copy of it
     var clone = noteCategory.cloneNode(true);
     // Update the ID and add a class
