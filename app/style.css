@@ -133,15 +133,13 @@ label{
     width: 150px;
 }
 #addCategory{
-    height:100%;
-    width:50%;
-    position:absolute;
-    top:0%;
-    left:0%;
+    height: 15%;
+    width: 108%;
+    position: relative;
     border-style: hidden;
     margin-left: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 20px;
+    margin-bottom: 5px;
 }
 #buttonAddCategory{
     position: absolute;
@@ -289,4 +287,21 @@ label{
     cursor: pointer;
     outline: none;
     display: none;
+}
+
+
+.fcc-btn {
+    background-color: #185cb6;
+    color: white;
+    padding: 8px 22px;
+    text-decoration: none;
+    width: 83px;
+    margin-left: 607px;
+    border-radius: 29px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.fcc-btn:hover {
+    background-color: #22942c;
 }
