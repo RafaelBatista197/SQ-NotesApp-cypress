@@ -15,7 +15,8 @@ pipeline{
                 transfers: [
                     sshTransfer(cleanRemote: false, 
                     excludes: '', 
-                    execCommand: '''sudo mv -v ~/project/app/* /var/www/html''', 
+                    execCommand: '''sudo cp -R ~/project/app/* /var/www/html
+                    rm -R ~/project/app/''', 
                     execTimeout: 120000, 
                     flatten: false, 
                     makeEmptyDirs: false, 
@@ -70,7 +71,8 @@ pipeline{
                 transfers: [
                     sshTransfer(cleanRemote: false, 
                     excludes: '', 
-                    execCommand: '''sudo mv -v ~/project/app/* /var/www/html''', 
+                    execCommand: '''sudo cp -R ~/project/app/* /var/www/html
+                    rm -R ~/project/app/''', 
                     execTimeout: 120000, 
                     flatten: false, 
                     makeEmptyDirs: false, 
