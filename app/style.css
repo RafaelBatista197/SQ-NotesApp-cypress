@@ -88,15 +88,6 @@ label{
     height: 400px;
     margin-top: 100px;
 }
-.box{
-    background: white;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    padding: 15px 10px;
-    margin: 1px 0;
-    position: relative;
-    height: auto;
-    animation: scale 0.4s;
-}
 @keyframes scale{
     from{
         transform: scale(0);
@@ -104,19 +95,6 @@ label{
     to{
         transform: scale(1);
     }
-}
-.box p{
-    font-size: 17px;
-    font-family: sans-serif;
-}
-.notes button{
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    border: none;
-    background: none;
-    cursor: pointer;
-    outline: none;
 }
 
 /* part for add */
