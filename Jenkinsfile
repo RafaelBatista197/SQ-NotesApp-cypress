@@ -9,7 +9,7 @@ pipeline{
     }
 
    stages {
-        stage('Build/Deploy app to staging') {
+        stage('Build/Deploy App to Staging') {
             steps {
                 sshPublisher(publishers: [sshPublisherDesc(configName: 'staging', 
                 transfers: [
@@ -31,9 +31,9 @@ pipeline{
                 verbose: true)])
             }
         }
-        stage('Run automated tests') {
+        stage('Run Automated Tests') {
             parallel {
-                stage('Run automated tests') {
+                stage('End-to-End Tests') {
                     steps {
                         sh 'npm prune'
                         sh 'npm cache clean --force'
@@ -71,14 +71,14 @@ pipeline{
                 }
             }
         }
-        stage('Perform manual testing') {
+        stage('Perform Manual Testing') {
             steps {
                 timeout(activity: true, time: 5) { 
                     input 'Proceed to production?'
                 }
             }
         }
-        stage('Release to production') {
+        stage('Release to Production') {
             steps {
                 sshPublisher(publishers: [sshPublisherDesc(configName: 'production', 
                 transfers: [
