@@ -127,6 +127,31 @@ Then(/^the category is visible$/, () => {
 
 
 
+//SECOND LAST SCENARIO
+
+Given(/^the user types the text of the note$/, () => {
+  cy.get('textarea').type('Party this weekend{enter}')
+});
+
+Given(/^does not select a category$/, () => {
+  //check if the default value for the spinner is selected 
+  //If it is, is because the user did not select a category.
+  cy.get('#category').contains('Select a Category')
+});
+
+When(/^he clicks on the button to add the new note$/, () => {
+  cy.get('#add').click()
+});
+
+Then(/^the note is added to the list of notes$/, () => {
+  cy.get('#note')
+});
+
+Then(/^the note only has text$/, () => {
+  cy.get('#s3 > .box > p').should('be.empty')
+  cy.get('#s4 > .box > p').contains("Party this weekend")
+});
+
 
 //LAST SCENARIO
 

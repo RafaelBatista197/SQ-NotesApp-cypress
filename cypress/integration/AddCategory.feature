@@ -66,42 +66,25 @@ Feature: Add a category
         And the category is visible
 
 # #-----------------------------------------------------------------------
-# #Backtrack
 
-#     Scenario: Create a note and assign a category that doesn't exist yet
-#         Given the user is on the web application to write a new note
-#         And he wants to assign a category to that note
-#         When that category is not on the list of categories
-#         And clicks on the add category button
-#         Then an editable area appears to write the category
-
-
-#     Scenario: Add a new category that doesn't exist yet
-#         Given an editable area appears to write the category
-#         When the user writes the name of the new category
-#         And clicks on the confirm button
-#         Then the new category is added to the list of categories
-
-
-#     Scenario: Add the new category to the note
-#         Given the new category is on the list of categories
-#         And the user writes text in the note
-#         And chooses the new category
-#         When the user clicks the button to add the new note
-#         Then the note is added to the list of notes
-#         And the category is visible
+#    Scenario: Create a note and assign a new category
+#        Given the user creates a new category
+#        When he types the the text of the note
+#        And chooses the new category from the list of categories
+#        And clicks the button to add the new note
+#        Then the note is be added to the list of notes
+#        And the category corresponds to the new category
+#        And the text corresponds to the text written
 
 
 # #-----------------------------------------------------------------------
 
-#     Scenario: Not selecting a category when creating a new note
-#         Given the user is on the web application to write a new note
-#         And he does not want to add a category to that note
-#         When the user types the text of the note
-#         And does not select a category
-#         And clicks on the button to add the new note 
-#         Then the note is added to the list of notes
-#         And has no category
+     Scenario: Not selecting a category when creating a new note
+         Given the user types the text of the note
+         And does not select a category
+         When he clicks on the button to add the new note
+         Then the note is added to the list of notes
+         And the note only has text
 
 # #-----------------------------------------------------------------------
 
