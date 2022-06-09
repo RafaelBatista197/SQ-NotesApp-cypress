@@ -32,29 +32,42 @@ pipeline{
             }
         }
         stage('Run automated tests') {
-            steps {
-                sh 'npm prune'
-                sh 'npm cache clean --force'
-                sh 'npm i'
-                sh 'npm install --save-dev mochawesome mochawesome-merge mochawesome-report-generator'
-                sh 'rm -f mochawesome.json'
-                sh 'rm cypress/results/* || true'
-                sh 'npx cypress run --headless --config baseUrl="http://34.140.43.143" --browser electron --spec ${SPEC} --reporter mochawesome'
-                sh 'npx mochawesome-merge cypress/results/*.json -o mochawesome-report/mochawesome.json'
-                sh 'npx marge mochawesome-report/mochawesome.json' 
-            }
-            post {
-                success {
-                    publishHTML (
-                        target : [
-                            allowMissing: false,
-                            alwaysLinkToLastBuild: true,
-                            keepAll: true,
-                            reportDir: 'mochawesome-report',
-                            reportFiles: 'mochawesome.html',
-                            reportName: 'My Reports',
-                            reportTitles: 'The Report'])
+            parallel {
+                stage('Run automated tests') {
+                    steps {
+                        sh 'npm prune'
+                        sh 'npm cache clean --force'
+                        sh 'npm i'
+                        sh 'npm install --save-dev mochawesome mochawesome-merge mochawesome-report-generator'
+                        sh 'rm -f mochawesome.json'
+                        sh 'rm cypress/results/* || true'
+                        sh 'npx cypress run --headless --config baseUrl="http://34.140.43.143" --browser electron --spec ${SPEC} --reporter mochawesome'
+                        sh 'npx mochawesome-merge cypress/results/*.json -o mochawesome-report/mochawesome.json'
+                        sh 'npx marge mochawesome-report/mochawesome.json' 
+                    }
+                    post {
+                        success {
+                            publishHTML (
+                                target : [
+                                    allowMissing: false,
+                                    alwaysLinkToLastBuild: true,
+                                    keepAll: true,
+                                    reportDir: 'mochawesome-report',
+                                    reportFiles: 'mochawesome.html',
+                                    reportName: 'My Reports',
+                                    reportTitles: 'The Report'])
 
+                        }
+                    }
+                }
+                stage('Static Analysis') {
+                    environment {
+                        SCANNER_HOME = tool 'SonarScanner'
+                    }
+                    
+                    steps {
+                        sh "$SCANNER_HOME/bin/sonar-scanner"
+                    }
                 }
             }
         }
