@@ -10,25 +10,35 @@ pipeline{
 
    stages {
         stage('Build/Deploy App to Staging') {
-            steps {
-                sshPublisher(publishers: [sshPublisherDesc(configName: 'staging', 
-                transfers: [
-                    sshTransfer(cleanRemote: false, 
-                    excludes: '', 
-                    execCommand: '''sudo cp -R ~/project/app/* /var/www/html
-                    rm -R ~/project/app/''', 
-                    execTimeout: 120000, 
-                    flatten: false, 
-                    makeEmptyDirs: false, 
-                    noDefaultExcludes: false, 
-                    patternSeparator: '[, ]+', 
-                    remoteDirectory: '', 
-                    remoteDirectorySDF: false,
-                    removePrefix: '', 
-                    sourceFiles: 'app/**')], 
-                usePromotionTimestamp: false, 
-                useWorkspaceInPromotion: false, 
-                verbose: true)])
+            parallel {
+                stage('Staging server') {
+                    steps {
+                        sshPublisher(publishers: [sshPublisherDesc(configName: 'staging', 
+                        transfers: [
+                            sshTransfer(cleanRemote: false, 
+                            excludes: '', 
+                            execCommand: '''sudo cp -R ~/project/app/* /var/www/html
+                            rm -R ~/project/app/''', 
+                            execTimeout: 120000, 
+                            flatten: false, 
+                            makeEmptyDirs: false, 
+                            noDefaultExcludes: false, 
+                            patternSeparator: '[, ]+', 
+                            remoteDirectory: '', 
+                            remoteDirectorySDF: false,
+                            removePrefix: '', 
+                            sourceFiles: 'app/**')], 
+                        usePromotionTimestamp: false, 
+                        useWorkspaceInPromotion: false, 
+                        verbose: true)])
+                    }
+                }
+                stage('Performance') {
+                    steps {
+                        sh "/home/rafaelbatista9710_gmail_com/jmeter/apache-jmeter-5.4.3/bin/
+                        .jmeter -n -t /var/lib/jenkins/workspace/notes-app pipeline/testplans "
+                    }
+                }
             }
         }
         stage('Run Automated Tests') {
