@@ -36,8 +36,8 @@ pipeline{
                 stage('Performance') {
                     steps {
                         //echo "Performance"
-                        sh "./jmeter -n -t 'testplans/simple_test_notes_final.jmx'"
-                        sh "./jmeter -n -t 'testplans/test_final.jmx'"
+                        sh "../../jmeter/apache-jmeter-5.4.3/bin/ ./jmeter -n -t ../../simple_test_notes_final.jmx"
+                        sh "../../jmeter/apache-jmeter-5.4.3/bin/ ./jmeter -n -t ../../test_final.jmx"
                     }
                 }
             }
