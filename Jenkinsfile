@@ -35,9 +35,9 @@ pipeline{
                 }
                 stage('Performance') {
                     steps {
-                        //echo "Performance"
-                        sh "../../jmeter/apache-jmeter-5.4.3/bin/ ./jmeter -n -t ../../simple_test_notes_final.jmx"
-                        sh "../../jmeter/apache-jmeter-5.4.3/bin/ ./jmeter -n -t ../../test_final.jmx"
+                        echo "Performance"
+                        //sh "/var/lib/jenkins/jmeter/apache-jmeter-5.4.3/bin/ ./jmeter -n -t '/var/lib/jenkins/workspace/notes-app pipeline/testplans/simple_test_notes_final.jmx'"
+                        //sh "/var/lib/jenkins/jmeter/apache-jmeter-5.4.3/bin/ ./jmeter -n -t '/var/lib/jenkins/workspace/notes-app pipeline/testplans/test_final.jmx'"
                     }
                 }
             }
