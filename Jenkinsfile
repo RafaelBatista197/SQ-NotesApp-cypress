@@ -35,7 +35,7 @@ pipeline{
                 }
                 stage('Performance') {
                     steps {
-                        sh "/home/rafaelbatista9710_gmail_com/jmeter/apache-jmeter-5.4.3/bin/ ./jmeter -n -t /var/lib/jenkins/workspace/notes-app pipeline/testplans"
+                        sh "/var/lib/jenkins/jmeter/apache-jmeter-5.4.3/bin/ ./jmeter -n -t /var/lib/jenkins/workspace/notes-app pipeline/testplans"
                     }
                 }
             }
