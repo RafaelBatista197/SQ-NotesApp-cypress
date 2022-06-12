@@ -125,9 +125,40 @@ Then(/^the category is visible$/, () => {
   cy.get('#s3 > .box > p').contains("Reminder")
 });
 
+// 6th SCENARIO
+
+Given(/^the user creates a new category$/, () => {
+  cy.get('#categoryText')
+  cy.get('#categoryText').type('Gym')
+  cy.get('#buttonAddCategory').click()
+});
+
+When(/^he types the the text of the note$/, () => {
+  cy.get('textarea').type('Party this Friday{enter}')
+});
+
+When(/^chooses the new category from the list of categories$/, () => {
+  cy.get('#category').select('Gym')
+});
+
+When(/^clicks the button to add the new note$/, () => {
+  cy.get('#add').click()
+});
+
+Then(/^the note is added to the list of notes$/, () => {
+  cy.get('#note')
+});
+
+Then(/^the category corresponds to the new category$/, () => {
+  cy.get('#s3 > .box > p').contains("Gym")
+});
+
+Then(/^the text corresponds to the text written$/, () => {
+  cy.get('#s4 > .box > p').contains("Party this Friday")
+});
 
 
-//SECOND LAST SCENARIO
+// 7th LAST SCENARIO
 
 Given(/^the user types the text of the note$/, () => {
   cy.get('textarea').type('Party this weekend{enter}')
