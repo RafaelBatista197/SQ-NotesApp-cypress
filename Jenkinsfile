@@ -39,8 +39,7 @@ pipeline{
                         dir ('/var/lib/jenkins/jmeter/apache-jmeter-5.4.3/bin') {
                             sh "whoami"
                             sh "pwd"
-                            sh "./jmeter -n -t /var/lib/jenkins/jmeter/simple_test_notes_final.jmx"
-                            //sh "../../jmeter/apache-jmeter-5.4.3/bin/ ./jmeter -n -t ../../test_final.jmx"
+                            sh "./jmeter -n -t /var/lib/jenkins/workspace/notes-app pipeline/testplans/*.jmx"
                         }
                         
                     }
