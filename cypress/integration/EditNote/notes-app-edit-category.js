@@ -156,6 +156,10 @@ Then(/^the system shows a warning message$/, () => {
         console.log("runnable :" + runnable)
         return false
     })
+
+    /*cy.on('window:alert', (text) => {
+        expect(text).to.equal('Cant leave note text empty.')
+    });*/
 });
  
 Then(/^that note is not updated on the list$/, () => {
@@ -165,13 +169,13 @@ Then(/^that note is not updated on the list$/, () => {
 });
 
 
+// 5TH SCENARIO - DONE
+
 /*
 Given(/^the user has created a note with text and category$/, () => {
     cy.get('textarea').type('Party this weekend{enter}')
     cy.get('#category').select('Reminder')
     cy.get('#add').click()
-
-
 });
  
 Given(/^that note already has text$/, () => {
@@ -183,16 +187,184 @@ Given(/^that note already has category$/, () => {
 });
  
 When(/^the user clicks on the edit button$/, () => {
+    cy.get('#button-edit').click()
 });
  
-When(/^selects a new category from the list of categories$/, () => {
+When(/^deletes the text of the note$/, () => {
+    cy.get('#s4 > .box > p').clear()
+});
+ 
+When(/^clicks the save button$/, () => {
+    cy.get('#button-save-edit').click()
+});
+ 
+Then(/^the system shows a warning message saying "([^"]*)"$/, (arg0,) => {
+    cy.on('window:alert', (text) => {
+        expect(text).to.equal('Cant leave note text empty.')
+    });
+});
+ 
+Then(/^that note is not updated on the list$/, () => {
+    cy.get('#s4 > .box > p').contains("Party this weekend")
+    cy.get('#s3 > .box > p').contains("Reminder")
+    cy.get('.notes').should('have.length', 1)
+});*/
+
+
+// 6TH SCENARIO - DONE
+
+/*
+Given(/^the user has created a note with text and no category$/, () => {
+    cy.get('textarea').type('Party this weekend{enter}')
+    cy.get('#add').click()
+});
+ 
+Given(/^that note already has text$/, () => {
+    cy.get('#s4 > .box > p').contains("Party this weekend")
+});
+ 
+Given(/^that note has no category$/, () => {
+    cy.get('#s3 > .box > p').contains("")
+});
+ 
+When(/^the user clicks on the edit button$/, () => {
+    cy.get('#button-edit').click()
+});
+ 
+When(/^deletes the text of the note$/, () => {
+    cy.get('#s4 > .box > p').clear()
+});
+ 
+When(/^clicks the save button$/, () => {
+    cy.get('#button-save-edit').click()
+});
+ 
+Then(/^the system shows a warning message saying "([^"]*)"$/, (arg0,) => {
+    cy.on('window:alert', (text) => {
+        expect(text).to.equal('Cant leave note text empty.')
+    });
+});
+ 
+Then(/^that note is not updated on the list$/, () => {
+    cy.get('#s4 > .box > p').contains("Party this weekend")
+    cy.get('#s3 > .box > p').contains("")
+    cy.get('.notes').should('have.length', 1)
+});*/
+
+
+// 7TH SCENARIO - DONE
+/*
+Given(/^the user has created a note with text and category$/, () => {
+    cy.get('textarea').type('Party this weekend{enter}')
+    cy.get('#category').select('Reminder')
+    cy.get('#add').click()
+});
+ 
+Given(/^that note already has text$/, () => {
+    cy.get('#s4 > .box > p').contains("Party this weekend")
+});
+ 
+Given(/^that note already has category$/, () => {
+    cy.get('#s3 > .box > p').contains("Reminder")
+});
+ 
+When(/^the user clicks on the edit button$/, () => {
+    cy.get('#button-edit').click()
+});
+ 
+When(/^deletes the category text$/, () => {
+    cy.get('#s3 > .box > p').clear()
 });
  
 When(/^edits the text of the note$/, () => {
+    cy.get('textarea').type('Party this weekend at 8:00 pm{enter}')
 });
  
-When(/^clicks the <action> button$/, () => {
+When(/^clicks the save button$/, () => {
+    cy.get('#button-save-edit').click()
 });
  
-Then(/^that note <outcome> be updated on the list$/, () => {
+Then(/^that note contains no category$/, () => {
+    cy.get('#s3 > .box > p').contains("")
+});
+ 
+Then(/^that note text is updated on the list$/, () => {
+    cy.get('#s4 > .box > p').contains("Party this weekend at 8:00 pm")
+    cy.get('#s3 > .box > p').contains("")
+    cy.get('.notes').should('have.length', 1)
+});*/
+
+
+// 8TH SCENARIO - DONE
+/*
+Given(/^the user has created a note with text and category$/, () => {
+    cy.get('textarea').type('Party this weekend{enter}')
+    cy.get('#category').select('Reminder')
+    cy.get('#add').click()
+});
+ 
+Given(/^that note already has text$/, () => {
+    cy.get('#s4 > .box > p').contains("Party this weekend")
+});
+ 
+Given(/^that note already has category$/, () => {
+    cy.get('#s3 > .box > p').contains("Reminder")
+});
+ 
+Given(/^the user wants to edit the text$/, () => {
+});
+ 
+When(/^the user clicks on the edit button$/, () => {
+    cy.get('#button-edit').click()
+});
+ 
+When(/^edits the text of the note$/, () => {
+    cy.get('textarea').type('Party this weekend at 8:00 pm{enter}')
+});
+ 
+When(/^clicks the save button$/, () => {
+    cy.get('#button-save-edit').click()
+});
+ 
+Then(/^that note is updated on the list$/, () => {
+    cy.get('#s4 > .box > p').contains("Party this weekend at 8:00 pm")
+    cy.get('#s3 > .box > p').contains("Reminder")
+    cy.get('.notes').should('have.length', 1)
+});*/
+
+
+// 9TH SCENARIO - DONE
+/*
+Given(/^the user has created a note with text and no category$/, () => {
+    cy.get('textarea').type('Party this weekend{enter}')
+    cy.get('#add').click()
+});
+ 
+Given(/^that note already has text$/, () => {
+    cy.get('#s4 > .box > p').contains("Party this weekend")
+});
+ 
+Given(/^that note has no category$/, () => {
+    cy.get('#s3 > .box > p').contains("")
+});
+ 
+Given(/^the user wants to edit the text$/, () => {
+});
+ 
+When(/^the user clicks on the edit button$/, () => {
+    cy.get('#button-edit').click()
+});
+ 
+When(/^edits the text of the note$/, () => {
+    cy.get('textarea').type('Party this weekend at 8:00 pm{enter}')
+});
+ 
+When(/^clicks the save button$/, () => {
+    cy.get('#button-save-edit').click()
+});
+ 
+Then(/^that note is updated on the list$/, () => {
+    cy.get('#s4 > .box > p').contains("Party this weekend at 8:00 pm")
+    cy.get('#s3 > .box > p').contains("")
+    cy.get('.notes').should('have.length', 1)
 });*/

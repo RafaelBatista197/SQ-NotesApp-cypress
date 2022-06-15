@@ -61,30 +61,78 @@ Feature: Edit an item of the list of notes
         Then the system shows a warning message
         And that note is not updated on the list
 
-
-    # #-------- Caminho onde é um item que tem (categoria e nota),
-    # #-------- vai ser apagado o texto da nota, ou seja, só vai
-    # #-------- ficar com a categoria,
+    # DONE---------
     # Scenario: Edit note with category and text where the text is deleted
+    #     Given the user has created a note with text and category
     #     And that note already has text
     #     And that note already has category
-    #     And the user wants to delete the text of the note
     #     When the user clicks on the edit button
     #     And deletes the text of the note
     #     And clicks the save button
-    #     Then the system shows a warning message
+    #     Then the system shows a warning message saying "Cant leave note text empty."
     #     And that note is not updated on the list
 
-
-    # Scenario: Edit note that has no category and the text is deleted
+    # DONE-----------
+    # Scenario: Edit note that has no category and only has text and the text is deleted
     #     Given the user has created a note with text and no category
     #     And that note already has text
-    #     And that note already has no category
-    #     And the user wants to delete the text of the note
+    #     And that note has no category
     #     When the user clicks on the edit button
     #     And deletes the text of the note
     #     And clicks the save button
-    #     Then the system shows a warning message
+    #     Then the system shows a warning message saying "Cant leave note text empty."
+    #     And that note is not updated on the list
+
+    # DONE-----------
+    # Scenario: Edit note where category is deleted and text note is updated
+    #     Given the user has created a note with text and category
+    #     And that note already has text
+    #     And that note already has category
+    #     When the user clicks on the edit button
+    #     And deletes the category text
+    #     And edits the text of the note
+    #     And clicks the save button
+    #     Then that note contains no category
+    #     And that note text is updated on the list
+
+    #DONE--------------
+    # Scenario: Edit note that has category and text but where only the text note is edited
+    #     Given the user has created a note with text and category
+    #     And that note already has text
+    #     And that note already has category
+    #     And the user wants to edit the text
+    #     But doesn't want to edit the category of the note
+    #     When the user clicks on the edit button
+    #     And edits the text of the note
+    #     And clicks the save button
+    #     Then that note is updated on the list
+
+    #DONE--------------
+    # Scenario: Edit note that only has text on the note and only that text is updated
+    #     Given the user has created a note with text and no category
+    #     And that note already has text
+    #     And that note has no category
+    #     And the user wants to edit the text
+    #     But doesn't want to edit the category
+    #     When the user clicks on the edit button
+    #     And edits the text of the note
+    #     And clicks the save button
+    #     Then that note is updated on the list
+
+
+    # #-------- Caminho onde é editado um item que tem (categoria e nota) mas só é editada a categoria
+    # #-------- ou seja, o texto da nota vai continuar igual; neste caso é escrito uma categoria que
+    # #-------- já existe, por isso vai dar erro e o user tem de ir ao spinner e escolher a que ja existe
+    # Scenario: Edit note category to one that is wrttien but already exists
+    #     And that note already has text
+    #     And that note already has category
+    #     And the user wants to edit the category
+    #     And the category exists on the list
+    #     But doesn't want to edit the text
+    #     When the user clicks on the edit button
+    #     And writes a category that exists on the list
+    #     And clicks the save button
+    #     Then the application shows a warning message because category already exists
     #     And that note is not updated on the list
 
 
@@ -141,38 +189,6 @@ Feature: Edit an item of the list of notes
     #     And a new category is added to the list of categoreis
 
 
-
-    # #-------- Caminho onde um item que tem (categoria e nota) só é editado o texto da nota,
-    # #-------- ou seja, a categoria vai ficar igual e o texto muda
-    # Scenario: Edit note that has category and text where only the text is edited
-    #     And that note already has text
-    #     And that note already has category
-    #     And the user wants to edit the text
-    #     But doesn't want to edit the category of the note
-    #     When the user clicks on the edit button
-    #     And edits the text of the note
-    #     And clicks the save button
-    #     Then that note is updated on the list
-
-
-
-    # #-------- Caminho onde é editado um item que tem (categoria e nota) mas só é editada a categoria
-    # #-------- ou seja, o texto da nota vai continuar igual; neste caso é escrito uma categoria que
-    # #-------- já existe, por isso vai dar erro e o user tem de ir ao spinner e escolher a que ja existe
-    # Scenario: Edit note category to one that is wrttien but already exists
-    #     And that note already has text
-    #     And that note already has category
-    #     And the user wants to edit the category
-    #     And the category exists on the list
-    #     But doesn't want to edit the text
-    #     When the user clicks on the edit button
-    #     And writes a category that exists on the list
-    #     And clicks the save button
-    #     Then the application shows a warning message because category already exists
-    #     And that note is not updated on the list
-
-
-
     # #-------- Caminho onde é editado um item que tem (categoria e nota) mas só é editada a categoria
     # #-------- ou seja, o texto da nota vai continuar igual; neste caso, categoria vai ser escolhida
     # #-------- da lista que já existe, ou seja o user não vai escrever nada na categoria
@@ -189,38 +205,6 @@ Feature: Edit an item of the list of notes
     #     And clicks the save button
     #     Then that note is updated
 
-
-
-
-    # #-------- Caminho onde é editado um item que só tem texto (nota) mas não tem categoria, e vai continuar a não ter
-    # #-------- categoria, ou seja,
-    # #-------- é mesmo uma nota sem categoria e só é editado o texto da nota
-    # Scenario: Edit note that only has text on the note
-    #     And that note already has text
-    #     And that note has no category
-    #     And the user wants to edit the text
-    #     But doesn't want to edit the category
-    #     When the user clicks on the edit button
-    #     And edits the text of the note
-    #     And clicks the save button
-    #     Then that note updates the text
-
-
-
-    # #-------- Caminho onde é editado um item que tem (categoria e nota),
-    # #-------- e vai ser apagada a cateogira
-    # #-------- e é editado o texto da nota
-    # Scenario: Edit note where category is deleted and text note updated
-    #     And that note already has text
-    #     And that note already has category
-    #     And the user wants to edit the text
-    #     And delete the category of the note
-    #     When the user clicks on the edit button
-    #     And deletes the category text
-    #     And edits the text of the note
-    #     And clicks the save button
-    #     Then that note contains no category
-    #     And that note updates the text
 
 
 
