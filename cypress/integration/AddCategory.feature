@@ -67,14 +67,14 @@ Feature: Add a category
 
 # #-----------------------------------------------------------------------
 
-#    Scenario: Create a note and assign a new category
-#        Given the user creates a new category
-#        When he types the the text of the note
-#        And chooses the new category from the list of categories
-#        And clicks the button to add the new note
-#        Then the note is be added to the list of notes
-#        And the category corresponds to the new category
-#        And the text corresponds to the text written
+    Scenario: Create a note and assign a new category
+        Given the user creates a new category
+        When he types the the text of the note
+        And chooses the new category from the list of categories
+        And clicks the button to add the new note
+        Then the note is added to the list of notes
+        And the category corresponds to the new category
+        And the text corresponds to the text written
 
 
 # #-----------------------------------------------------------------------
