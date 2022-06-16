@@ -191,10 +191,12 @@ addBtn.addEventListener('click',(e)=>{
             for ( var i=0; i <= length - 1; i++ ) {
                 if (document.getElementById('category').options[i].text == textCat)  {
                     alert('Category already exists, please enter a different category.');
+                    text.innerHTML = test;
                     flag = true;
                 } 
                    
             }
+            //
             if (flag) {
                 return;
             } else {

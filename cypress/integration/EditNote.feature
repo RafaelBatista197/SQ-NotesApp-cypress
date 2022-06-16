@@ -128,7 +128,23 @@ Feature: Edit an item of the list of notes
          And writes a different category that already exists in the list of categories
          And clicks the save button
          Then the application shows a warning message saying "Category already exists, please enter a different category."
-         And that note isn't updated on the list
+         And that note does not get updated on the list
+
+
+    # #-------- Caminho onde é editado um item que (categoria e nota) e ambos são editados; é escrito uma categoria (2)
+    # #-------- na caixa de texto que ja existe, ou seja,
+    # #-------- já existe na lista, por isso vai da erro
+    # #11 DONE
+     Scenario: Edit the category of an existing note to one that already exists and edit the text as well
+         Given the user has created a note with text and category
+         And that note already has text
+         And that note has category
+         When the user clicks on the edit button
+         And writes a different category that already exists in the list of categories
+         And edits the text of the note
+         And clicks the save button
+         Then the application shows a warning message saying "Category already exists, please enter a different category."
+         And that note doesn't get updated on the list
 
 
     # Scenario: Edit the text and category of the note
@@ -146,22 +162,6 @@ Feature: Edit an item of the list of notes
     #         | save   | should    |
     #         | cancel | shouldn't |
 
-
-    # #-------- Caminho onde é editado um item que (categoria e nota) e ambos são editados; é escrito uma categoria (2)
-    # #-------- na caixa de texto que ja existe, ou seja,
-    # #-------- já existe na lista, por isso vai da erro
-    # Scenario: Edit note category to one that already exists
-    #     And that note already has text
-    #     And that note already has category
-    #     And the user wants to edit the text
-    #     And the user wants to edit the category
-    #     But the category exists on the list
-    #     When the user clicks on the edit button
-    #     And writes a category that exists on the list
-    #     And edits the text of the note
-    #     And clicks the save button
-    #     Then the application shows a warning message because category already exists
-    #     And that note is not be updated on the list
 
 
 

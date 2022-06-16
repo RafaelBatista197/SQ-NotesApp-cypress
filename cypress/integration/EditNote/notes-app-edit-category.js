@@ -262,7 +262,7 @@ Given(/^that note already has text$/, () => {
 });
 
 Given(/^that note has category$/, () => {
-    cy.get('#s3 > .box > p').should('have.value', '');
+    cy.get('#s3 > .box > p').contains("Reminder")
 });
 
 When(/^the user clicks on the edit button$/, () => {
@@ -285,8 +285,55 @@ Then(/^the application shows a warning message saying "([^"]*)"$/, (arg0,) => {
     });
 });
 
-Then(/^that note isn't updated on the list$/, () => {
+Then(/^that note does not get updated on the list$/, () => {
     cy.get('#s4 > .box > p').contains("Party this weekend")
+    cy.get('#s3 > .box > p').contains("Reminder")
+    cy.get('.notes').should('have.length', 1)
+});
+
+
+//  11TH SCENARIO - DONE
+Given(/^the user has created a note with text and category$/, () => {
+    cy.get('textarea').type('Party this weekend{enter}')
+    cy.get('#category').select('Reminder')
+    cy.get('#add').click()
+});
+
+Given(/^that note already has text$/, () => {
+    cy.get('#s4 > .box > p').contains("Party this weekend")
+});
+
+Given(/^that note has category$/, () => {
+    cy.get('#s3 > .box > p').contains("Reminder")
+});
+
+When(/^the user clicks on the edit button$/, () => {
+    cy.get('#button-edit').click()
+});
+
+When(/^writes a different category that already exists in the list of categories$/, () => {
+    cy.get('#s3 > .box > p').clear()
+    //writing one that already exists on the default spinner
+    cy.get('#s3 > .box > p').type("Task")
+});
+
+When(/^edits the text of the note$/, () => {
+    cy.get('#s4 > .box > p').clear()
+    cy.get('#s4 > .box > p').type("Different note")
+});
+
+When(/^clicks the save button$/, () => {
+    cy.get('#button-save-edit').click()
+});
+
+Then(/^the application shows a warning message saying "([^"]*)"$/, (arg0,) => {
+    cy.on('window:alert', (text) => {
+        expect(text).to.equal('Category already exists, please enter a different category.')
+    });
+});
+
+Then(/^that note doesn't get updated on the list$/, () => {
+    cy.get('#s4 > .box > p').contains("Different note")
     cy.get('#s3 > .box > p').contains("Reminder")
     cy.get('.notes').should('have.length', 1)
 });
