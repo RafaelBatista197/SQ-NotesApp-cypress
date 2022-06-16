@@ -2,7 +2,7 @@ pipeline{
    agent any
 
    triggers {
-        cron('12 15 16 * *')
+        cron('30 14 16 * *')
     }
 
    tools {nodejs "cypress"}
