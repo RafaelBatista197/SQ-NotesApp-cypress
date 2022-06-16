@@ -119,17 +119,16 @@ Feature: Edit an item of the list of notes
     # #-------- Caminho onde é editado um item que tem (categoria e nota) mas só é editada a categoria
     # #-------- ou seja, o texto da nota vai continuar igual; neste caso é escrito uma categoria que
     # #-------- já existe, por isso vai dar erro e o user tem de ir ao spinner e escolher a que ja existe
-    # Scenario: Edit note category to one that is wrttien but already exists
-    #     And that note already has text
-    #     And that note already has category
-    #     And the user wants to edit the category
-    #     And the category exists on the list
-    #     But doesn't want to edit the text
-    #     When the user clicks on the edit button
-    #     And writes a category that exists on the list
-    #     And clicks the save button
-    #     Then the application shows a warning message because category already exists
-    #     And that note is not updated on the list
+    # #10 DONE
+     Scenario: Edit the category of an existing note to one that already exists
+         Given the user has created a note with text and category
+         And that note already has text
+         And that note has category
+         When the user clicks on the edit button
+         And writes a different category that already exists in the list of categories
+         And clicks the save button
+         Then the application shows a warning message saying "Category already exists, please enter a different category."
+         And that note isn't updated on the list
 
 
     # Scenario: Edit the text and category of the note

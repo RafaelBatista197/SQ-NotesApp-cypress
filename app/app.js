@@ -86,8 +86,6 @@ addBtn.addEventListener('click',(e)=>{
     noteWithCatAndText.appendChild(buttonDeleteNote);
     noteWithCatAndText.appendChild(buttonSaveEditNote);
     
-
-
     
 
     //Putting the category and the description on the 2 boxes
@@ -104,7 +102,6 @@ addBtn.addEventListener('click',(e)=>{
     //Adding category spinner to category box
     box.appendChild(clone);
 
-    
     
  
     //get the category from the spinner, into the note
@@ -126,6 +123,7 @@ addBtn.addEventListener('click',(e)=>{
         textArea.value = '';
     }
 
+
     //Edit button action
     buttonEditNote.addEventListener("click", function() {
         text.contentEditable = true;
@@ -133,9 +131,9 @@ addBtn.addEventListener('click',(e)=>{
         buttonCancelEditNote.style.display="initial";
         buttonSaveEditNote.style.display="initial";
         closeBtn.style.display="initial"
-        //clone.style.display="initial";
+        clone.style.display="initial";
         
-        /*
+        
         var textToFind = text.innerHTML;
 
         for (var i = 0; i < clone.options.length; i++) {
@@ -143,8 +141,7 @@ addBtn.addEventListener('click',(e)=>{
                 clone.selectedIndex = i;
                 break;
             }
-        }   
-        */
+        }  
         test = text.innerHTML;
         box.appendChild(closeBtn);
         closeBtn.addEventListener('click',()=>{
@@ -153,6 +150,7 @@ addBtn.addEventListener('click',(e)=>{
        
     });
 
+
     //Cancel button action
     buttonCancelEditNote.addEventListener("click", function() {
         text.contentEditable = false;
@@ -160,9 +158,9 @@ addBtn.addEventListener('click',(e)=>{
         buttonSaveEditNote.style.display="none";
         buttonCancelEditNote.style.display="none";
         closeBtn.style.display="none";
-        //clone.style.display="initial";
+        clone.style.display="none";
         
-        /*
+        
         var textToFind = text.innerHTML;
 
         for (var i = 0; i < clone.options.length; i++) {
@@ -171,14 +169,13 @@ addBtn.addEventListener('click',(e)=>{
                 break;
             }
         }   
-        test = text.innerHTML;*/
+        test = text.innerHTML;
         
-       
     });
 
     //Save button action
     buttonSaveEditNote.addEventListener("click", function() {
-        /*
+        
         var textCat = text.innerHTML;
         var flag = false;
         var selectedTextFromCategoryWhenEditingCategory = clone.options[clone.selectedIndex].text;
@@ -187,7 +184,8 @@ addBtn.addEventListener('click',(e)=>{
         if(textCat  == selectedTextFromCategoryWhenEditingCategory){
             text.innerHTML = selectedTextFromCategoryWhenEditingCategory;
         }
-        if ( textCat != test){
+        //if category exists on the list and is not empty
+        if ( textCat != test && text.innerHTML != ""){
             
             var length=document.getElementById('category').options.length;
             for ( var i=0; i <= length - 1; i++ ) {
@@ -200,7 +198,7 @@ addBtn.addEventListener('click',(e)=>{
             if (flag) {
                 return;
             } else {
-                //Add category to list of category - if new
+                //Add category to list of category - if new category
                 get_position('category', text.innerHTML);
                 get_position('category-on-box', text.innerHTML);
                 test = textCat;
@@ -209,7 +207,6 @@ addBtn.addEventListener('click',(e)=>{
         } else {
              text.innerHTML = selectedTextFromCategoryWhenEditingCategory;
         }
-        */
 
         if(text1.innerHTML === "" && text.innerHTML === "") {
             alert('Cant leave note text empty.');
@@ -225,10 +222,8 @@ addBtn.addEventListener('click',(e)=>{
             buttonCancelEditNote.style.display="none";
             closeBtn.style.display="none"
         }
-
-        //clone.style.display="none";
+        clone.style.display="none";
     });
-    
 
     buttonDeleteNote.addEventListener('click',()=>{
         noteWithCatAndText.remove();
@@ -236,6 +231,7 @@ addBtn.addEventListener('click',(e)=>{
 
     notes.appendChild(noteWithCatAndText);
 });
+
 
 // Changing the color of the text.
 colorInput.addEventListener('change',()=>{
@@ -268,3 +264,16 @@ addCategoryBtn.addEventListener('click',(e)=>{
         }
     }
 });
+
+//Add new category to list of cateogry when editing if not exists
+function get_position(id,option_name) {
+
+    var flag = false;
+    
+    var length=document.getElementById(id).options.length;
+    
+    //add item on drop down now
+    
+    document.getElementById(id).options[length] = new Option( option_name, length );
+    
+}
