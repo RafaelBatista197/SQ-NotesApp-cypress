@@ -249,6 +249,49 @@ Then(/^that note isn't updated on the list$/, () => {
     cy.get('.notes').should('have.length', 1)
 });
 
+// // 7TH SCENARIO - DONE
+
+Given(/^the user has created a note with text and category$/, () => {
+    cy.get('textarea').type('Party this weekend{enter}')
+    cy.get('#category').select('Reminder')
+    cy.get('#add').click()
+});
+ 
+Given(/^that note already has text$/, () => {
+    cy.get('#s4 > .box > p').contains("Party this weekend")
+});
+ 
+Given(/^that note already has category$/, () => {
+    cy.get('#s3 > .box > p').contains("Reminder")
+});
+ 
+When(/^the user clicks on the edit button$/, () => {
+    cy.get('#button-edit').click()
+});
+ 
+When(/^deletes the category text$/, () => {
+    cy.get('#s3 > .box > p').clear()
+});
+ 
+When(/^changes the text of the note$/, () => {
+    cy.get('#s4 > .box > p').clear()
+    cy.get('#s4 > .box > p').type('Party this weekend at 8:00 pm{enter}')
+});
+ 
+When(/^clicks the save button$/, () => {
+    cy.get('#button-save-edit').click()
+});
+ 
+Then(/^that note contains no category$/, () => {
+    cy.get('#s3 > .box > p').should('have.value', '');
+});
+ 
+Then(/^that note text is updated on the list$/, () => {
+    cy.get('#s4 > .box > p').contains("Party this weekend at 8:00 pm")
+    cy.get('#s3 > .box > p').should('have.value', '');
+    cy.get('.notes').should('have.length', 1)
+});
+
 
 //  10TH SCENARIO - DONE
 Given(/^the user has created a note with text and category$/, () => {

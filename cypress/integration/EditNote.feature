@@ -84,16 +84,16 @@ Feature: Edit an item of the list of notes
         And that note isn't updated on the list
 
     #7 DONE-----------
-    # Scenario: Edit note where category is deleted and text note is updated
-    #     Given the user has created a note with text and category
-    #     And that note already has text
-    #     And that note already has category
-    #     When the user clicks on the edit button
-    #     And deletes the category text
-    #     And edits the text of the note
-    #     And clicks the save button
-    #     Then that note contains no category
-    #     And that note text is updated on the list
+    Scenario: Edit note where category is deleted and text note is updated
+        Given the user has created a note with text and category
+        And that note already has text
+        And that note already has category
+        When the user clicks on the edit button
+        And deletes the category text
+        And changes the text of the note
+        And clicks the save button
+        Then that note contains no category
+        And that note text is updated on the list
 
     # #8 DONE--------------
     # Scenario: Edit note that has category and text but where only the text note is edited
