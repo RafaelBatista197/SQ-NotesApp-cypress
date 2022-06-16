@@ -269,13 +269,10 @@ addCategoryBtn.addEventListener('click',(e)=>{
 
 //Add new category to list of cateogry when editing if not exists
 function get_position(id,option_name) {
-
-    var flag = false;
     
     var length=document.getElementById(id).options.length;
     
     //add item on drop down now
-    
     document.getElementById(id).options[length] = new Option( option_name, length );
     
 }
