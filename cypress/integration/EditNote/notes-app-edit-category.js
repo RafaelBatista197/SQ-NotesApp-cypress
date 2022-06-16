@@ -338,4 +338,64 @@ Then(/^that note doesn't get updated on the list$/, () => {
     cy.get('.notes').should('have.length', 1)
 });
 
+//  13TH SCENARIO - DONE
+Given(/^the user has created a note with text and category$/, () => {
+    cy.get('textarea').type('Party this weekend{enter}')
+    cy.get('#category').select('Reminder')
+    cy.get('#add').click()
+});
+
+Given(/^that note already has text$/, () => {
+    cy.get('#s4 > .box > p').contains("Party this weekend")
+});
+
+Given(/^that note has category$/, () => {
+    cy.get('#s3 > .box > p').contains("Reminder")
+});
+
+When(/^the user clicks on the edit button$/, () => {
+    cy.get('#button-edit').click()
+});
+
+When(/^writes a new category that doesn't exist on the list$/, () => {
+    cy.get('#s3 > .box > p').clear()
+    //writing one that already exists on the default spinner
+    cy.get('#s3 > .box > p').type("School")
+});
+
+When(/^edits the text of the note$/, () => {
+    cy.get('#s4 > .box > p').clear()
+    cy.get('#s4 > .box > p').type("Different note")
+});
+
+When(/^clicks the save button$/, () => {
+    cy.get('#button-save-edit').click()
+});
+
+Then(/^that note updates the category$/, (arg0,) => {
+    cy.get('#s3 > .box > p').contains("School")
+});
+
+Then(/^updates the text$/, (arg0,) => {
+    cy.get('#s4 > .box > p').contains("Different note")
+});
+
+Then(/^a new category is added to the list of categories$/, () => {
+    //check category spinner in note
+    cy.get('.categories')
+    .find('#category')
+    .then(category => {
+    const listingCount = Cypress.$(category).children().length;
+    expect(category.children()).to.have.length(listingCount);
+    });
+
+    //check category spinner in edit
+    cy.get('#s3 > .box')
+    .find('#category-on-box')
+    .then(category => {
+    const listingCount = Cypress.$(category).children().length;
+    expect(category.children()).to.have.length(listingCount);
+    });
+});
+
 

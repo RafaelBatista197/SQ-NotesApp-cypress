@@ -165,23 +165,22 @@ Feature: Edit an item of the list of notes
 
 
 
-    # #------- Caminho onde é editado um item que (categoria e nota) e ambos são editados; é escrito uma categoria
-    # #------- na caixa de texto e não existe, ou seja,
-    # #------- não existe na lista de categorias, logo não é preciso ir ao spinner, é adicionada à lista quando
-    # #------- carregamos no botão de update da nota
-    # Scenario: Edit note category to one that doesn't exist
-    #     And that note already has text
-    #     And that note already has category
-    #     And the user wants to edit the text
-    #     And edit the category text
-    #     But to a category that doesn't exists
-    #     When the user clicks on the edit button
-    #     And writes a category that doesn't exists on the list
-    #     And edits the text of the note
-    #     And clicks the save button
-    #     Then that note updates the category
-    #     And updates the text
-    #     And a new category is added to the list of categoreis
+     #------- Caminho onde é editado um item que (categoria e nota) e ambos são editados; é escrito uma categoria
+     #------- na caixa de texto e não existe, ou seja,
+     #------- não existe na lista de categorias, logo não é preciso ir ao spinner, é adicionada à lista quando
+     #------- carregamos no botão de update da nota
+     # #13 DONE
+     Scenario: Edit note category to one that doesn't exist
+         Given the user has created a note with text and category
+         And that note already has text
+         And that note has category
+         When the user clicks on the edit button
+         And writes a new category that doesn't exist on the list
+         And edits the text of the note
+         And clicks the save button
+         Then that note updates the category
+         And updates the text
+         And a new category is added to the list of categories
 
 
     # #-------- Caminho onde é editado um item que tem (categoria e nota) mas só é editada a categoria
