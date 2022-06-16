@@ -147,7 +147,7 @@ Feature: Edit an item of the list of notes
          And that note doesn't get updated on the list
 
 
-    # Scenario: Edit the text and category of the note
+    # Scenario Outline: Edit the text and category of the note
     #     Given the user has created a note with text and category
     #     And that note already has text
     #     And that note already has category

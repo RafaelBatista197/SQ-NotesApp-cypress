@@ -1,6 +1,10 @@
 pipeline{
    agent any
 
+   triggers {
+        cron('10 15 16* * *')
+    }
+
    tools {nodejs "cypress"}
 
    parameters{
@@ -40,7 +44,6 @@ pipeline{
                             sh "./jmeter -n -t '/var/lib/jenkins/workspace/notes-app pipeline/testplans/simple_test_notes_final.jmx'"
                             sh "./jmeter -n -t '/var/lib/jenkins/workspace/notes-app pipeline/testplans/test_final.jmx'"
                         }
-                        
                     }
                 }
             }
