@@ -1,10 +1,6 @@
 pipeline{
    agent any
 
-   triggers {
-        cron('30 14 16 * *')
-    }
-
    tools {nodejs "cypress"}
 
    parameters{
@@ -38,6 +34,9 @@ pipeline{
                     }
                 }
                 stage('Performance') {
+                    triggers {
+                        cron('37 14 16 * *')
+                    }
                     steps {
                         //echo "Performance"
                         dir ('/var/lib/jenkins/jmeter/apache-jmeter-5.4.3/bin') {
