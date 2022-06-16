@@ -35,7 +35,7 @@ pipeline{
                 }
                 stage('Performance') {
                     triggers {
-                        cron('37 14 16 * *')
+                        cron('40 14 16 * *')
                     }
                     steps {
                         //echo "Performance"
