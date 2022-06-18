@@ -106,14 +106,14 @@ Feature: Edit an item of the list of notes
         Then that note is updated on the list
 
     # #9 DONE--------------
-    # Scenario: Edit note that only has text on the note and only that text is updated
-    #     Given the user has created a note with text and no category
-    #     And that note already has text
-    #     And that note has no category
-    #     When the user clicks on the edit button
-    #     And edits the text of the note
-    #     And clicks the save button
-    #     Then that note gets updated on the list
+    Scenario: Edit note that only has text on the note and only that text is updated
+        Given the user has created a note with text and no category
+        And that note already has text
+        And that note has no category
+        When the user clicks on the edit button
+        And edits the text of the note
+        And clicks the save button
+        Then that note gets updated on the list
 
 
     # #-------- Caminho onde é editado um item que tem (categoria e nota) mas só é editada a categoria
@@ -187,18 +187,15 @@ Feature: Edit an item of the list of notes
     # #-------- ou seja, o texto da nota vai continuar igual; neste caso, categoria vai ser escolhida
     # #-------- da lista que já existe, ou seja o user não vai escrever nada na categoria
     # #-------- mas vai usar o spinner
-    # 14 
-    # Scenario: Edit note category that is choosen from the list of category
+    # 14 DONE
+    # Scenario: Edit only note category to one that is choosen from the list of category
+    #     Given the user has created a note with text and category
     #     And that note already has text
     #     And that note already has category
-    #     And the user wants to edit the category
-    #     And edit the category to one that already exists
-    #     But doesn't edit the text of the note
     #     When the user clicks on the edit button
     #     And selects a new category from the list of categories
-    #     And edits the text of the note
     #     And clicks the save button
-    #     Then that note is updated
+    #     Then that note is updated with the new selected category
 
 
 
