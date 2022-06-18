@@ -142,7 +142,11 @@ addBtn.addEventListener('click',(e)=>{
                 break;
             }
         }  
+        //save old category
         test = text.innerHTML;
+        //save old note text
+        text_note = text1.innerHTML;
+
         box.appendChild(closeBtn);
         closeBtn.addEventListener('click',()=>{
             box.remove();
@@ -169,7 +173,9 @@ addBtn.addEventListener('click',(e)=>{
                 break;
             }
         }   
-        test = text.innerHTML;
+        //restoring the old values
+        text.innerHTML = test;
+        text1.innerHTML = text_note;
         
     });
 

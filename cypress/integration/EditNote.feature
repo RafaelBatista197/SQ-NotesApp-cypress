@@ -158,7 +158,7 @@ Feature: Edit an item of the list of notes
          And that note has category
          When the user clicks on the edit button
          And writes a new category that doesn't exist on the list
-         And text of the note of the note is edited
+         And text of the note is edited
          And clicks the save button
          Then that note updates the category
          And updates the text
@@ -188,6 +188,16 @@ Feature: Edit an item of the list of notes
         And selects a new category from the list of categories
         And clicks the cancel button
         Then that note is not updated with the new selected category
+
+    # 15
+    Scenario: Edit only note text and cancel
+        Given the user has created a note with text and category
+        And that note already has text
+        And that note already has category
+        When the user clicks on the edit button
+        And text of the note is edited
+        And clicks the cancel button
+        Then that note is not updated with the new note text
 
 
 
