@@ -146,7 +146,7 @@ Feature: Edit an item of the list of notes
          Then the application shows a warning message saying "Category already exists, please enter a different category."
          And that note doesn't get updated on the list
 
-
+    # #12 
     # Scenario Outline: Edit the text and category of the note
     #     Given the user has created a note with text and category
     #     And that note already has text
@@ -187,6 +187,7 @@ Feature: Edit an item of the list of notes
     # #-------- ou seja, o texto da nota vai continuar igual; neste caso, categoria vai ser escolhida
     # #-------- da lista que já existe, ou seja o user não vai escrever nada na categoria
     # #-------- mas vai usar o spinner
+    # 14 
     # Scenario: Edit note category that is choosen from the list of category
     #     And that note already has text
     #     And that note already has category
