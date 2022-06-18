@@ -50,9 +50,7 @@ addBtn.addEventListener('click',(e)=>{
     const text = document.createElement('p');
     const text1 = document.createElement('p');
     
-    const closeBtn = document.createElement('button');
-    closeBtn.id = "delete_category_button";
-    closeBtn.innerHTML = "X";
+    
 
     // Create a copy of it
     var clone = noteCategory.cloneNode(true);
@@ -130,7 +128,7 @@ addBtn.addEventListener('click',(e)=>{
         text1.contentEditable = true;
         buttonCancelEditNote.style.display="initial";
         buttonSaveEditNote.style.display="initial";
-        closeBtn.style.display="initial"
+        
         clone.style.display="initial";
         
         
@@ -147,10 +145,7 @@ addBtn.addEventListener('click',(e)=>{
         //save old note text
         text_note = text1.innerHTML;
 
-        box.appendChild(closeBtn);
-        closeBtn.addEventListener('click',()=>{
-            box.remove();
-        })
+        
        
     });
 
@@ -161,7 +156,6 @@ addBtn.addEventListener('click',(e)=>{
         text1.contentEditable = false;
         buttonSaveEditNote.style.display="none";
         buttonCancelEditNote.style.display="none";
-        closeBtn.style.display="none";
         clone.style.display="none";
         
         
@@ -228,7 +222,6 @@ addBtn.addEventListener('click',(e)=>{
             text1.contentEditable = false;
             buttonSaveEditNote.style.display="none";
             buttonCancelEditNote.style.display="none";
-            closeBtn.style.display="none"
         }
         clone.style.display="none";
     });

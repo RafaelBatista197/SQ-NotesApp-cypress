@@ -22,6 +22,7 @@ Feature: Edit an item of the list of notes
         When he checks the title of the application
         Then he can see he is on the Notes App
 
+    #1 DONE---------
     Scenario: Check that the note is editable when user clicks to edit note
         Given the user has created a note with text and category
         And that note already has text
@@ -30,6 +31,7 @@ Feature: Edit an item of the list of notes
         Then the note text becomes editable 
         And the note category becomes editable 
 
+    #2 DONE---------
     Scenario: Check that the note is not editable when user clicks on cancel
         Given the user has created a note with text and category
         And that note already has text
@@ -41,15 +43,7 @@ Feature: Edit an item of the list of notes
         Then the note text is no longer editable 
         And the note category is no longer editable 
 
-    Scenario: Edit note that has category and text where category is removed first and then the note
-        Given the user has created a note with text and category
-        And that note already has text
-        And that note already has category
-        When the user clicks on the edit button
-        And removes the category first  
-        And clicks on the delete button to remove the note 
-        Then note will be removed from the list of notes
-
+    #3 DONE---------
     Scenario: Edit note that has category and text and both texts are deleted
         Given the user has created a note with text and category
         And that note already has text
@@ -61,7 +55,7 @@ Feature: Edit an item of the list of notes
         Then the system shows a warning message saying "Cant leave note text empty."
         And that note is not updated on the list
 
-    #5 DONE---------
+    #4 DONE---------
     Scenario: Edit note with category and text where the text is deleted
         Given the user has created a note with text and category
         And that note already has text
@@ -72,7 +66,7 @@ Feature: Edit an item of the list of notes
         Then the system shows a warning message saying "Cant leave note text empty."
         And that note is not updated on the list
 
-    #6 DONE-----------
+    #5 DONE-----------
     Scenario: Edit note that has no category and only has text and the text is deleted
         Given the user has created a note with text and no category
         And that note already has text
@@ -83,7 +77,7 @@ Feature: Edit an item of the list of notes
         Then the system shows a warning message saying "Cant leave note text empty."
         And that note isn't updated on the list
 
-    #7 DONE-----------
+    #6 DONE-----------
     Scenario: Edit note where category is deleted and text note is updated
         Given the user has created a note with text and category
         And that note already has text
@@ -95,7 +89,7 @@ Feature: Edit an item of the list of notes
         Then that note contains no category
         And that note text is updated on the list
 
-    # #8 DONE--------------
+    # #7 DONE--------------
     Scenario: Edit note that has category and text but where only the text note is edited
         Given the user has created a note with text and category
         And that note already has text
@@ -105,7 +99,7 @@ Feature: Edit an item of the list of notes
         And clicks the save button
         Then that note is updated on the list
 
-    # #9 DONE--------------
+    # #8 DONE--------------
     Scenario: Edit note that only has text on the note and only that text is updated
         Given the user has created a note with text and no category
         And that note already has text
@@ -119,7 +113,7 @@ Feature: Edit an item of the list of notes
     # #-------- Caminho onde é editado um item que tem (categoria e nota) mas só é editada a categoria
     # #-------- ou seja, o texto da nota vai continuar igual; neste caso é escrito uma categoria que
     # #-------- já existe, por isso vai dar erro e o user tem de ir ao spinner e escolher a que ja existe
-    # #10 DONE
+    # #9 DONE
      Scenario: Edit the category of an existing note to one that already exists
          Given the user has created a note with text and category
          And that note already has text
@@ -134,7 +128,7 @@ Feature: Edit an item of the list of notes
     # #-------- Caminho onde é editado um item que (categoria e nota) e ambos são editados; é escrito uma categoria (2)
     # #-------- na caixa de texto que ja existe, ou seja,
     # #-------- já existe na lista, por isso vai da erro
-    # #11 DONE
+    # #10 DONE
      Scenario: Edit the category of an existing note to one that already exists and edit the text as well
          Given the user has created a note with text and category
          And that note already has text
@@ -151,7 +145,7 @@ Feature: Edit an item of the list of notes
      #------- na caixa de texto e não existe, ou seja,
      #------- não existe na lista de categorias, logo não é preciso ir ao spinner, é adicionada à lista quando
      #------- carregamos no botão de update da nota
-     # #12 DONE
+     # #11 DONE
      Scenario: Edit note category to one that doesn't exist
          Given the user has created a note with text and category
          And that note already has text
@@ -169,7 +163,7 @@ Feature: Edit an item of the list of notes
     # #-------- ou seja, o texto da nota vai continuar igual; neste caso, categoria vai ser escolhida
     # #-------- da lista que já existe, ou seja o user não vai escrever nada na categoria
     # #-------- mas vai usar o spinner
-    # 13 DONE
+    # 12 DONE
     Scenario: Edit only note category to one that is choosen from the list of category
         Given the user has created a note with text and category
         And that note already has text
@@ -179,8 +173,8 @@ Feature: Edit an item of the list of notes
         And clicks the save button
         Then that note is updated with the new selected category
 
-    # 14
-    Scenario: Edit only note category by choosing from the list and cancel
+    # 13
+    Scenario: Edit note category by choosing from the list and cancel
         Given the user has created a note with text and category
         And that note already has text
         And that note already has category
@@ -189,8 +183,8 @@ Feature: Edit an item of the list of notes
         And clicks the cancel button
         Then that note is not updated with the new selected category
 
-    # 15
-    Scenario: Edit only note category by writing a new category and cancel
+    # 14
+    Scenario: Edit note category by writing a new category and cancel
         Given the user has created a note with text and category
         And that note already has text
         And that note already has category
@@ -199,8 +193,8 @@ Feature: Edit an item of the list of notes
         And clicks the cancel button
         Then that note is not updated with the new selected category
 
-    # 16
-    Scenario: Edit only note text and cancel
+    # 15
+    Scenario: Edit note text and cancel
         Given the user has created a note with text and category
         And that note already has text
         And that note already has category
@@ -208,6 +202,8 @@ Feature: Edit an item of the list of notes
         And text of the note is edited
         And clicks the cancel button
         Then that note is not updated with the new note text
+
+    
 
 
 

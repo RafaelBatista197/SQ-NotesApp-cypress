@@ -106,38 +106,6 @@ When(/^the user clicks on the edit button$/, () => {
     cy.get('#button-edit').click()
 });
  
-When(/^removes the category first$/, () => {
-    cy.get('#delete_category_button').click()
-});
- 
-When(/^clicks on the delete button to remove the note$/, () => {
-    cy.get('#delete-note').click()
-});
- 
-Then(/^note will be removed from the list of notes$/, () => {
-    cy.get('#note').should('have.length', 0)
-});
- 
-// 4TH SCENARIO
-
-Given(/^the user has created a note with text and category$/, () => {
-    cy.get('textarea').type('Party this weekend{enter}')
-    cy.get('#category').select('Reminder')
-    cy.get('#add').click()
-});
- 
-Given(/^that note already has text$/, () => {
-    cy.get('#s4 > .box > p').contains("Party this weekend")
-});
- 
-Given(/^that note already has category$/, () => {
-    cy.get('#s3 > .box > p').contains("Reminder")
-});
- 
-When(/^the user clicks on the edit button$/, () => {
-    cy.get('#button-edit').click()
-});
- 
 When(/^deletes the category text$/, () => {
     cy.get('#s3 > .box > p').clear()
 });
@@ -169,7 +137,7 @@ Then(/^that note is not updated on the list$/, () => {
 });
 
 
-// 5TH SCENARIO - DONE
+// 4TH SCENARIO - DONE
 
 Given(/^the user has created a note with text and category$/, () => {
     cy.get('textarea').type('Party this weekend{enter}')
@@ -210,7 +178,7 @@ Then(/^that note is not updated on the list$/, () => {
 });
 
 
-// // 6TH SCENARIO - DONE
+// // 5TH SCENARIO - DONE
 
 Given(/^the user has created a note with text and no category$/, () => {
     cy.get('textarea').type('Party this weekend{enter}')
@@ -249,7 +217,7 @@ Then(/^that note isn't updated on the list$/, () => {
     cy.get('.notes').should('have.length', 1)
 });
 
-// // 7TH SCENARIO - DONE
+// // 6TH SCENARIO - DONE
 
 Given(/^the user has created a note with text and category$/, () => {
     cy.get('textarea').type('Party this weekend{enter}')
@@ -292,7 +260,7 @@ Then(/^that note text is updated on the list$/, () => {
     cy.get('.notes').should('have.length', 1)
 });
 
-// // 8TH SCENARIO - DONE
+// // 7TH SCENARIO - DONE
 
 Given(/^the user has created a note with text and category$/, () => {
     cy.get('textarea').type('Party this weekend{enter}')
@@ -327,7 +295,7 @@ Then(/^that note is updated on the list$/, () => {
     cy.get('.notes').should('have.length', 1)
 });
 
-// // 9TH SCENARIO - DONE
+// // 8TH SCENARIO - DONE
 
 Given(/^the user has created a note with text and no category$/, () => {
     cy.get('textarea').type('Party this weekend{enter}')
@@ -361,7 +329,7 @@ Then(/^that note gets updated on the list$/, () => {
     cy.get('.notes').should('have.length', 1)
 });
 
-//  10TH SCENARIO - DONE
+//  9TH SCENARIO - DONE
 Given(/^the user has created a note with text and category$/, () => {
     cy.get('textarea').type('Party this weekend{enter}')
     cy.get('#category').select('Reminder')
@@ -403,7 +371,7 @@ Then(/^that note does not get updated on the list$/, () => {
 });
 
 
-//  11TH SCENARIO - DONE
+//  10TH SCENARIO - DONE
 Given(/^the user has created a note with text and category$/, () => {
     cy.get('textarea').type('Party this weekend{enter}')
     cy.get('#category').select('Reminder')
@@ -449,7 +417,7 @@ Then(/^that note doesn't get updated on the list$/, () => {
     cy.get('.notes').should('have.length', 1)
 });
 
-//  12TH SCENARIO - DONE
+//  11TH SCENARIO - DONE
 Given(/^the user has created a note with text and category$/, () => {
     cy.get('textarea').type('Party this weekend{enter}')
     cy.get('#category').select('Reminder')
@@ -509,7 +477,7 @@ Then(/^a new category is added to the list of categories$/, () => {
     });
 });
 
-//  13TH SCENARIO - DONE
+//  12TH SCENARIO - DONE
 Given(/^the user has created a note with text and category$/, () => {
     cy.get('textarea').type('Party this weekend{enter}')
     cy.get('#category').select('Reminder')
@@ -543,7 +511,7 @@ Then(/^that note is updated with the new selected category$/, () => {
     cy.get('.notes').should('have.length', 1)
 });
 
-// 14TH SCENARIO
+// 13TH SCENARIO
 
 Given(/^the user has created a note with text and category$/, () => {
     cy.get('textarea').type('Party this weekend{enter}')
@@ -578,7 +546,7 @@ Then(/^that note is not updated with the new selected category$/, () => {
     cy.get('.notes').should('have.length', 1)
 });
 
-// 15TH SCENARIO
+// 14TH SCENARIO
 
 Given(/^the user has created a note with text and category$/, () => {
     cy.get('textarea').type('Party this weekend{enter}')
@@ -614,7 +582,7 @@ Then(/^that note is not updated with the new selected category$/, () => {
     cy.get('.notes').should('have.length', 1)
 });
 
-// 16TH SCENARIO
+// 15TH SCENARIO
 
 Given(/^the user has created a note with text and category$/, () => {
     cy.get('textarea').type('Party this weekend{enter}')
