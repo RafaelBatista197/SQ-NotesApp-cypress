@@ -180,7 +180,7 @@ Feature: Edit an item of the list of notes
         Then that note is updated with the new selected category
 
     # 14
-    Scenario: Edit only note category and cancel
+    Scenario: Edit only note category by choosing from the list and cancel
         Given the user has created a note with text and category
         And that note already has text
         And that note already has category
@@ -190,6 +190,16 @@ Feature: Edit an item of the list of notes
         Then that note is not updated with the new selected category
 
     # 15
+    Scenario: Edit only note category by writing a new category and cancel
+        Given the user has created a note with text and category
+        And that note already has text
+        And that note already has category
+        When the user clicks on the edit button
+        And writes a new category that doesn't exist on the list
+        And clicks the cancel button
+        Then that note is not updated with the new selected category
+
+    # 16
     Scenario: Edit only note text and cancel
         Given the user has created a note with text and category
         And that note already has text

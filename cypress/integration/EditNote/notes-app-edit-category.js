@@ -598,6 +598,42 @@ When(/^the user clicks on the edit button$/, () => {
     cy.get('#button-edit').click()
 });
  
+When(/^writes a new category that doesn't exist on the list$/, () => {
+    cy.get('#s3 > .box > p').clear()
+    //writing one that not exists on the default spinner
+    cy.get('#s3 > .box > p').type("School")
+});
+ 
+When(/^clicks the cancel button$/, () => {
+    cy.get('#cancel-edit-note').click()
+});
+ 
+Then(/^that note is not updated with the new selected category$/, () => {
+    cy.get('#s4 > .box > p').contains("Party this weekend")
+    cy.get('#s3 > .box > p').contains("Reminder")
+    cy.get('.notes').should('have.length', 1)
+});
+
+// 16TH SCENARIO
+
+Given(/^the user has created a note with text and category$/, () => {
+    cy.get('textarea').type('Party this weekend{enter}')
+    cy.get('#category').select('Reminder')
+    cy.get('#add').click()
+});
+ 
+Given(/^that note already has text$/, () => {
+    cy.get('#s4 > .box > p').contains("Party this weekend")
+});
+ 
+Given(/^that note already has category$/, () => {
+    cy.get('#s3 > .box > p').contains("Reminder")
+});
+ 
+When(/^the user clicks on the edit button$/, () => {
+    cy.get('#button-edit').click()
+});
+ 
 When(/^text of the note is edited$/, () => {
     cy.get('#s4 > .box > p').clear()
     cy.get('#s4 > .box > p').type("Different note")
