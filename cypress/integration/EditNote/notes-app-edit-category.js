@@ -449,7 +449,7 @@ Then(/^that note doesn't get updated on the list$/, () => {
     cy.get('.notes').should('have.length', 1)
 });
 
-//  13TH SCENARIO - DONE
+//  12TH SCENARIO - DONE
 Given(/^the user has created a note with text and category$/, () => {
     cy.get('textarea').type('Party this weekend{enter}')
     cy.get('#category').select('Reminder')
@@ -509,7 +509,7 @@ Then(/^a new category is added to the list of categories$/, () => {
     });
 });
 
-//  14TH SCENARIO - DONE
+//  13TH SCENARIO - DONE
 Given(/^the user has created a note with text and category$/, () => {
     cy.get('textarea').type('Party this weekend{enter}')
     cy.get('#category').select('Reminder')
@@ -540,5 +540,41 @@ When(/^clicks the save button$/, () => {
 Then(/^that note is updated with the new selected category$/, () => {
     cy.get('#s4 > .box > p').contains("Party this weekend")
     cy.get('#s3 > .box > p').contains("Task")
+    cy.get('.notes').should('have.length', 1)
+});
+
+// 14TH SCENARIO
+
+//  13TH SCENARIO - DONE
+Given(/^the user has created a note with text and category$/, () => {
+    cy.get('textarea').type('Party this weekend{enter}')
+    cy.get('#category').select('Reminder')
+    cy.get('#add').click()
+});
+ 
+Given(/^that note already has text$/, () => {
+    cy.get('#s4 > .box > p').contains("Party this weekend")
+});
+ 
+Given(/^that note already has category$/, () => {
+    cy.get('#s3 > .box > p').contains("Reminder")
+});
+ 
+When(/^the user clicks on the edit button$/, () => {
+    cy.get('#button-edit').click()
+});
+ 
+When(/^selects a new category from the list of categories$/, () => {
+    cy.get('#s3 > .box')
+    .find('#category-on-box').select('Task')
+});
+ 
+When(/^clicks the cancel button$/, () => {
+    cy.get('#cancel-edit-note').click()
+});
+ 
+Then(/^that note is not updated with the new selected category$/, () => {
+    cy.get('#s4 > .box > p').contains("Party this weekend")
+    cy.get('#s3 > .box > p').contains("Reminder")
     cy.get('.notes').should('have.length', 1)
 });

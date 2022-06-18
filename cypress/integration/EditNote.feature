@@ -146,30 +146,12 @@ Feature: Edit an item of the list of notes
          Then the application shows a warning message saying "Category already exists, please enter a different category."
          And that note doesn't get updated on the list
 
-    # #12 
-    # Scenario Outline: Edit the text and category of the note
-    #     Given the user has created a note with text and category
-    #     And that note already has text
-    #     And that note already has category
-    #     When the user clicks on the edit button
-    #     And selects a new category from the list of categories
-    #     And edits the text of the note
-    #     And clicks the <action> button
-    #     Then that note <outcome> be updated on the list
-
-    #     Examples:
-    #         | action | outcome   |
-    #         | save   | should    |
-    #         | cancel | shouldn't |
-
-
-
 
      #------- Caminho onde é editado um item que (categoria e nota) e ambos são editados; é escrito uma categoria
      #------- na caixa de texto e não existe, ou seja,
      #------- não existe na lista de categorias, logo não é preciso ir ao spinner, é adicionada à lista quando
      #------- carregamos no botão de update da nota
-     # #13 DONE
+     # #12 DONE
      Scenario: Edit note category to one that doesn't exist
          Given the user has created a note with text and category
          And that note already has text
@@ -187,7 +169,7 @@ Feature: Edit an item of the list of notes
     # #-------- ou seja, o texto da nota vai continuar igual; neste caso, categoria vai ser escolhida
     # #-------- da lista que já existe, ou seja o user não vai escrever nada na categoria
     # #-------- mas vai usar o spinner
-    # 14 DONE
+    # 13 DONE
     Scenario: Edit only note category to one that is choosen from the list of category
         Given the user has created a note with text and category
         And that note already has text
@@ -196,6 +178,16 @@ Feature: Edit an item of the list of notes
         And selects a new category from the list of categories
         And clicks the save button
         Then that note is updated with the new selected category
+
+    # 14
+    Scenario: Edit only note category and cancel
+        Given the user has created a note with text and category
+        And that note already has text
+        And that note already has category
+        When the user clicks on the edit button
+        And selects a new category from the list of categories
+        And clicks the cancel button
+        Then that note is not updated with the new selected category
 
 
 
