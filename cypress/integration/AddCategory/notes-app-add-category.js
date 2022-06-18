@@ -102,7 +102,7 @@ Then(/^the new empty category is not be added to the list of categories$/, () =>
     });
 });
 
-// 5th SCENARIO
+// 4th SCENARIO
 
 
 Given(/^the user writes text in the note$/, () => {
@@ -125,7 +125,7 @@ Then(/^the category is visible$/, () => {
   cy.get('#s3 > .box > p').contains("Reminder")
 });
 
-// 6th SCENARIO
+// 5th SCENARIO
 
 Given(/^the user creates a new category$/, () => {
   cy.get('#categoryText')
@@ -158,7 +158,7 @@ Then(/^the text corresponds to the text written$/, () => {
 });
 
 
-// 7th LAST SCENARIO
+// 6th SCENARIO
 
 Given(/^the user types the text of the note$/, () => {
   cy.get('textarea').type('Party this weekend{enter}')
@@ -184,7 +184,7 @@ Then(/^the note only has text$/, () => {
 });
 
 
-//LAST SCENARIO
+//7th SCENARIO
 
 Given(/^the user only selects the category of the note$/, () => {
   cy.get('#category').select('Food')
@@ -203,4 +203,27 @@ Then(/^the system should give a warning saying "([^"]*)"$/, (arg0,) => {
 Then(/^the new note should not be created$/, () => {
   //should not create a new item
   cy.get('.notes').children().should('have.length', 0)
+});
+
+//8th SCENARIO
+
+Given(/^the user wants to create a category with only numbers$/, () => {
+  cy.get('#categoryText')
+});
+
+When(/^he types the numbers on the category$/, () => {
+  cy.get('#categoryText').type('123456789')
+});
+
+When(/^clicks on the confirm button$/, () => {
+  cy.get('#buttonAddCategory').click()
+});
+
+Then(/^the new category is added to the list of categories$/, () => {
+  cy.get('.categories')
+    .find('#category')
+    .then(category => {
+    const listingCount = Cypress.$(category).children().length;
+    expect(category.children()).to.have.length(listingCount);
+    });
 });

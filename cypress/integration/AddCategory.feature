@@ -39,22 +39,6 @@ Feature: Add a category
         Then the user gets a warning saying "The category must have some text!"
         And the new empty category is not be added to the list of categories  
 
-# #-----------------------------------------------------------------------
-
-#     Scenario Outline: Add a new category with numbers or symbols
-#         Given the user is on the web aplication to add a new category 
-#         And that category has <text>
-#         When the user clicks on the add category button 
-#         And an editable area appears to write the category
-#         And types <input>
-#         And clicks on the confirm button
-#         Then the new category is added to the list of categories
-
-#     Examples:
-#         |    text   |   input   |
-#         |  numbers  |   59213   |
-#         |  symbols  |   !#%&/   |
-
 
 # #-----------------------------------------------------------------------
 
@@ -94,5 +78,26 @@ Feature: Add a category
         Then the system should give a warning saying "Please Enter a note."
         And the new note should not be created
 
- 
+ # #-----------------------------------------------------------------------
+
+
+     Scenario: Add a new category with numbers
+         Given the user wants to create a category with only numbers
+         When he types the numbers on the category
+         And clicks on the confirm button
+         Then the new category is added to the list of categories
+
+
+ # #-----------------------------------------------------------------------
+
+#     Scenario Outline: Add a new category with numbers or symbols
+#         Given the user wants to type a category that has <text>
+#         When he types <input>
+#         And clicks on the confirm button
+#         Then the new category is added to the list of categories
+
+#     Examples:
+#         |    text   |   input   |
+#         |  numbers  |   59213   |
+#         |  symbols  |   !#%&/   |
 
