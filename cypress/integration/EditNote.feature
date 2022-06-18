@@ -96,14 +96,14 @@ Feature: Edit an item of the list of notes
         And that note text is updated on the list
 
     # #8 DONE--------------
-    # Scenario: Edit note that has category and text but where only the text note is edited
-    #     Given the user has created a note with text and category
-    #     And that note already has text
-    #     And that note already has category
-    #     When the user clicks on the edit button
-    #     And edits the text of the note
-    #     And clicks the save button
-    #     Then that note is updated on the list
+    Scenario: Edit note that has category and text but where only the text note is edited
+        Given the user has created a note with text and category
+        And that note already has text
+        And that note already has category
+        When the user clicks on the edit button
+        And edits the text of the note
+        And clicks the save button
+        Then that note is updated on the list
 
     # #9 DONE--------------
     # Scenario: Edit note that only has text on the note and only that text is updated
@@ -176,7 +176,7 @@ Feature: Edit an item of the list of notes
          And that note has category
          When the user clicks on the edit button
          And writes a new category that doesn't exist on the list
-         And edits the text of the note
+         And text of the note of the note is edited
          And clicks the save button
          Then that note updates the category
          And updates the text

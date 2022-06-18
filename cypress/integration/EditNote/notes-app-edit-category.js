@@ -292,6 +292,41 @@ Then(/^that note text is updated on the list$/, () => {
     cy.get('.notes').should('have.length', 1)
 });
 
+// // 8TH SCENARIO - DONE
+
+Given(/^the user has created a note with text and category$/, () => {
+    cy.get('textarea').type('Party this weekend{enter}')
+    cy.get('#category').select('Reminder')
+    cy.get('#add').click()
+});
+ 
+Given(/^that note already has text$/, () => {
+    cy.get('#s4 > .box > p').contains("Party this weekend")
+});
+ 
+Given(/^that note already has category$/, () => {
+    cy.get('#s3 > .box > p').contains("Reminder")
+});
+ 
+When(/^the user clicks on the edit button$/, () => {
+    cy.get('#button-edit').click()
+});
+ 
+When(/^edits the text of the note$/, () => {
+    cy.get('#s4 > .box > p').clear()
+    cy.get('#s4 > .box > p').type('Party this weekend at 8:00 pm{enter}')
+});
+ 
+When(/^clicks the save button$/, () => {
+    cy.get('#button-save-edit').click()
+});
+ 
+Then(/^that note is updated on the list$/, () => {
+    cy.get('#s4 > .box > p').contains("Party this weekend at 8:00 pm")
+    cy.get('#s3 > .box > p').contains("Reminder")
+    cy.get('.notes').should('have.length', 1)
+});
+
 
 //  10TH SCENARIO - DONE
 Given(/^the user has created a note with text and category$/, () => {
@@ -376,7 +411,7 @@ Then(/^the application shows a warning message saying "([^"]*)"$/, (arg0,) => {
 });
 
 Then(/^that note doesn't get updated on the list$/, () => {
-    cy.get('#s4 > .box > p').contains("Different note")
+    cy.get('#s4 > .box > p').contains("Party this weekend")
     cy.get('#s3 > .box > p').contains("Reminder")
     cy.get('.notes').should('have.length', 1)
 });
@@ -402,11 +437,11 @@ When(/^the user clicks on the edit button$/, () => {
 
 When(/^writes a new category that doesn't exist on the list$/, () => {
     cy.get('#s3 > .box > p').clear()
-    //writing one that already exists on the default spinner
+    //writing one that not exists on the default spinner
     cy.get('#s3 > .box > p').type("School")
 });
 
-When(/^edits the text of the note$/, () => {
+When(/^text of the note of the note is edited$/, () => {
     cy.get('#s4 > .box > p').clear()
     cy.get('#s4 > .box > p').type("Different note")
 });
