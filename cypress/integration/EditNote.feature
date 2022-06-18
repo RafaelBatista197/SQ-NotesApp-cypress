@@ -188,14 +188,14 @@ Feature: Edit an item of the list of notes
     # #-------- da lista que já existe, ou seja o user não vai escrever nada na categoria
     # #-------- mas vai usar o spinner
     # 14 DONE
-    # Scenario: Edit only note category to one that is choosen from the list of category
-    #     Given the user has created a note with text and category
-    #     And that note already has text
-    #     And that note already has category
-    #     When the user clicks on the edit button
-    #     And selects a new category from the list of categories
-    #     And clicks the save button
-    #     Then that note is updated with the new selected category
+    Scenario: Edit only note category to one that is choosen from the list of category
+        Given the user has created a note with text and category
+        And that note already has text
+        And that note already has category
+        When the user clicks on the edit button
+        And selects a new category from the list of categories
+        And clicks the save button
+        Then that note is updated with the new selected category
 
 
 
