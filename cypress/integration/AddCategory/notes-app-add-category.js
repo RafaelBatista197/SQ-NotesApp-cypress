@@ -227,3 +227,26 @@ Then(/^the new category is added to the list of categories$/, () => {
     expect(category.children()).to.have.length(listingCount);
     });
 });
+
+//9th SCENARIO
+
+Given(/^the user wants to create a category with only symbols$/, () => {
+  cy.get('#categoryText')
+});
+
+When(/^he types the symbols on the category$/, () => {
+  cy.get('#categoryText').type('!"#$%&/()=?')
+});
+
+When(/^clicks on the confirm button$/, () => {
+  cy.get('#buttonAddCategory').click()
+});
+
+Then(/^the new category is added to the list of categories$/, () => {
+  cy.get('.categories')
+    .find('#category')
+    .then(category => {
+    const listingCount = Cypress.$(category).children().length;
+    expect(category.children()).to.have.length(listingCount);
+    });
+});

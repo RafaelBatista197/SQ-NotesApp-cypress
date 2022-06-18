@@ -80,24 +80,17 @@ Feature: Add a category
 
  # #-----------------------------------------------------------------------
 
-
      Scenario: Add a new category with numbers
          Given the user wants to create a category with only numbers
          When he types the numbers on the category
          And clicks on the confirm button
          Then the new category is added to the list of categories
 
-
  # #-----------------------------------------------------------------------
 
-#     Scenario Outline: Add a new category with numbers or symbols
-#         Given the user wants to type a category that has <text>
-#         When he types <input>
-#         And clicks on the confirm button
-#         Then the new category is added to the list of categories
-
-#     Examples:
-#         |    text   |   input   |
-#         |  numbers  |   59213   |
-#         |  symbols  |   !#%&/   |
+     Scenario: Add a new category with symbols
+         Given the user wants to create a category with only symbols
+         When he types the symbols on the category
+         And clicks on the confirm button
+         Then the new category is added to the list of categories
 
